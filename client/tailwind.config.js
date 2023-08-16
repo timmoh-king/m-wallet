@@ -4,15 +4,16 @@ module.exports = {
   "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
     screens: {
-      sm: '480px',
+      sm: '640px',
       md: '768px',
-      lg: '976px',
-      xl: '1440px'
+      lg: '1024px',
+      xl: '1280px',
     },
     extend: {
       colors: {
         black: "#000000",
         white: "#FFFFFF",
+        red: "#FF0000",
         blackText: "#3E3E3E",
         green: "#056203",
         navyBlue: "#042873",
