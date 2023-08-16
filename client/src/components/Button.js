@@ -5,7 +5,8 @@ const Button = ({ buttonName, buttonStyle, onClick, linkTo }) => {
   return (
     <>
       {
-        linkTo? <Link to={linkTo} className={`${buttonStyle ? "flex-center rounded font-semibold py-2 h-2rem" + buttonStyle : "flex-center rounded font-semibold py-2 h-2rem"}`}  onClick={onClick}>
+        linkTo ? 
+        <Link to={linkTo} className={`${buttonStyle ? "flex-center rounded font-semibold py-2 h-2rem" + buttonStyle : "flex-center rounded font-semibold py-2 h-2rem"}`}  onClick={onClick}>
             {buttonName}
         </Link> :
         (
