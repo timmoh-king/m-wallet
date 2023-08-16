@@ -1,9 +1,9 @@
-import Logo from './components/Logo';
+import React from 'react'
 
 function App() {
   return (
     <div>
-      <Logo />
+      Welcome to M-Wallet
     </div>
   );
 }
