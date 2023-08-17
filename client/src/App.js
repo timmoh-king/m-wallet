@@ -1,10 +1,9 @@
 import React from 'react';
-import Signup from './pages/Signup';
 
 function App() {
   return (
     <div>
-      <Signup />
+      Welcome to M-Wallet
     </div>
   );
 }

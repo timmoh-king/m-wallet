@@ -11,7 +11,7 @@ const Signin = ({to}) => {
       <div className='container flex flex-row mx-auto bg-white rounded-lg shadow-lg items-center pt-12 pb-12 px-20 mt-20 mb-24 space-x-20 md:h-[436px]'>
         <div className='flex flex-col space-y-4 md:w-1/2 '>
             <div className='flex flex-col'>
-                <p className='text-navyBlue text-2xl font-bold pb-4'>Welcome back <span className='text-skyBlue'>How can we help?</span></p>
+                <p className='text-navyBlue text-2xl font-bold pb-6'>Welcome back <span className='text-skyBlue'>How can we help?</span></p>
                 <p className='text-sm text-blackText text-start'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
             </div>
             <div className='flex flex-row items-center justify-between'>
