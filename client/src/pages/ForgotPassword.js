@@ -23,14 +23,14 @@ const ForgotPassword = ({to}) => {
         </div>
         <div className='justify-end flex flex-col space-y-4 md:w-1/2'>
             <form>
-                <Input labelName='Email' placeHolder='Enter email' isRequired={true} name='email' inputStyle='w-full' />
-                <Input labelName='New password' placeHolder='Enter new password' isRequired={true} name='password' inputStyle='w-full' />
-                <Input labelName='Confirm password' placeHolder='Confirm new password' isRequired={true} name='password' inputStyle='w-full' />
-            </form>
-            <div className='flex justify-end'>
-                <Link className='text-sm text-blackText hover:text-skyBlue' to={to}>Don't have an account?</Link>
+                <Input labelName='Email' placeHolder='Enter email' isRequired={true} name='email' inputStyle='w-full' inputType='text' />
+                <Input labelName='New password' placeHolder='Enter new password' isRequired={true} name='password' inputStyle='w-full' inputType='password' />
+                <Input labelName='Confirm password' placeHolder='Confirm new password' isRequired={true} name='password' inputStyle='w-full'  inputType='password' />
+                <div className='flex justify-end'>
+                <Link className='text-sm text-blackText py-2 hover:text-skyBlue' to={to}>Don't have an account?</Link>
             </div>
             <Button buttonName="Save password" buttonStyle='bg-skyBlue w-full text-semibold text-white hover:bg-white hover:text-black hover:ring-1 hover:font-bold hover:ring-skyBlue' />
+            </form>
         </div>
       </div>
     </div>
