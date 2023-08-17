@@ -1,11 +1,9 @@
-import React from 'react'
-import Footer from './components/Footer';
+import React from 'react';
 
 function App() {
   return (
     <div>
       Welcome to M-Wallet
-      <Footer />
     </div>
   );
 }
