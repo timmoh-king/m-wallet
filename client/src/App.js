@@ -3,7 +3,7 @@ import React from 'react';
 function App() {
   return (
     <div>
-      Welcome to M-Walle
+      Welcome to M-Wallet
     </div>
   );
 }
