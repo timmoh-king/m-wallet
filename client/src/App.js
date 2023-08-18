@@ -1,9 +1,10 @@
 import React from 'react';
+import Homepage from './pages/Homepage';
 
 function App() {
   return (
     <div>
-      Welcome to M-Wallet
+      <Homepage />
     </div>
   );
 }
