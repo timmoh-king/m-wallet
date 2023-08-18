@@ -35,9 +35,16 @@ export const TitleComponent = () => {
 
 export const HeroSection = () => {
     return (
-        <div>
-
-        </div>
+        <section className='bg-blueBackground'>
+            <div className='container mx-auto flex flex-col items-center'>
+                <div className='w-full text-center space-y-12  mt-28 mb-28'>
+                    <p className='text-4xl font-bold text-center text-navyBlue'>Saving and budgeting <span className='text-skyBlue'>platform for workers</span></p>
+                    <p className='text-base text-blackText mx-24 font-normal'>Lorem ipsum dolor sit amet,Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p className='text-base italic font-medium animate-bounce'>“A budget is telling your money where to go instead of wondering where it went.” —John C. Maxwell</p>
+                </div>
+            </div>
+        </section>
+       
     )
 };
 
@@ -93,6 +100,7 @@ const Homepage = () => {
   return (
     <div>
       <Navbar />
+      <HeroSection />
       <Footer />
     </div>
   )
