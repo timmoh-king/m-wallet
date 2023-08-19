@@ -11,7 +11,6 @@ import decorationOne from '../assets/AboutDecorationOne.png';
 import decorationTwo from '../assets/AboutDecorationTwo.png';
 import decorationThree from '../assets/AboutDecorationThree.png';
 import eventsDecorationOne from '../assets/EventsDecorationOne.png';
-import eventsDecorationTwo from '../assets/EventsDecorationTwo.png';
 import eventsDecorationThree from '../assets/EventsDecorationThree.png';
 import sideImageOne from '../assets/desola-lanre-ologun-IgUR1iX0mqM-unsplash.jpg';
 import sideImageTwo from '../assets/israel-andrade-YI_9SivVt_s-unsplash.jpg';
@@ -43,10 +42,16 @@ export const HeroSection = () => {
     return (
         <section className='bg-blueBackground mt-2'>
             <div className='container mx-auto flex flex-col items-center'>
+                <div className='px-4 items-start w-full'>
+                    <img className='w-[96px] mt-2 absolute' src={dottedOne} alt='Get-to-know-us png'/>
+                </div>
                 <div className='w-full text-center space-y-12  mt-28 mb-28'>
                     <p className='text-4xl font-bold text-center text-navyBlue'>Saving and budgeting <span className='text-skyBlue'>platform for workers</span></p>
                     <p className='text-base text-blackText mx-24 font-normal'>Lorem ipsum dolor sit amet,Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
                     <p className='text-base italic font-medium animate-bounce'>“A budget is telling your money where to go instead of wondering where it went.” —John C. Maxwell</p>
+                </div>
+                <div className='px-4 flex items-start w-full justify-end'>
+                    <img className='mt-[-208px] w-[96px] absolute' src={dottedTwo} alt='Get-to-know-us png'/>
                 </div>
             </div>
         </section>
@@ -57,7 +62,7 @@ export const HeroSection = () => {
 export const ExploreSection = () => {
     return (
         <section className='bg-white'>
-            <div className='container mx-auto flex flex-row items-center justify-between space-x-6 mt-16 mb-16 px-14'>
+            <div className='container mx-auto flex flex-row items-center justify-between space-x-6 mt-20 mb-16 px-14'>
                 <div className='md:w-1/2'>
                     <TitleComponent imgsrc={chatLeftDotsFill} imgalt="message icon" imgtitle="Get to know us"/>
                     <div className='w-full flex flex-row space-x-3  mb-24 pt-8'>
@@ -65,8 +70,19 @@ export const ExploreSection = () => {
                         <Button buttonName="Register" buttonStyle="hidden w-[130px] p-2 px-6 text-white bg-navyBlue font-semibold baseline hover:ring-1 hover:ring-navyBlue hover:text-black hover:bg-white md:block " />
                     </div>
                 </div>
-                <div className='md:w-1/2 items-center'>
-                    <img className='rounded-md img-full' src={sideImageOne} alt='Get-to-know-us png'/>
+                <div className='flex flex-col items-center justify-between md:w-1/2'>
+                    <div className='mb-[-24px] px-4 flex justify-between items-center absolute'>
+                        <img className='rounded-md w-2/3' src={decorationThree} alt='Get-to-know-us png'/>
+                    </div>
+                    <div>
+                        <img className='rounded-md img-full' src={sideImageOne} alt='Get-to-know-us png'/>
+                    </div>
+                    <div className='mt-[-76px] px-4 items-start w-full'>
+                        <img className='rounded-md w-1/3' src={decorationOne} alt='Get-to-know-us png'/>
+                    </div>
+                    <div className='px-4 flex justify-end w-full'>
+                        <img className='rounded-md w-1/3' src={decorationTwo} alt='Get-to-know-us png'/>
+                    </div>
                 </div>
             </div>
         </section>
@@ -105,8 +121,16 @@ export const EventSection = () => {
                         <Button buttonName="Register" buttonStyle="hidden w-[130px] p-2 px-6 text-black bg-white font-semibold baseline ring-1 ring-navyBlue hover:text-white hover:bg-navyBlue md:block " />
                     </div>
                 </div>
-                <div className='md:w-1/2 items-center'>
-                    <img className='rounded-md img-full' src={sideImageTwo} alt='Get-to-know-us png'/>
+                <div className='flex flex-col items-center justify-between md:w-1/2'>
+                    <div className='mb-[-24px] mt-2 px-4 flex items-center absolute'>
+                        <img className='rounded-md w-full' src={eventsDecorationThree} alt='Get-to-know-us png'/>
+                    </div>
+                    <div>
+                        <img className='rounded-md img-full' src={sideImageTwo} alt='Get-to-know-us png'/>
+                    </div>
+                    <div className='mt-[-96px] px-1 items-start w-full'>
+                        <img className='rounded-md w-1/3' src={eventsDecorationOne} alt='Get-to-know-us png'/>
+                    </div>
                 </div>
             </div>
         </section>

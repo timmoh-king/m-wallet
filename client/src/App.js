@@ -1,12 +1,10 @@
-import React from 'react';
-import Homepage from './pages/Homepage';
-
+import React from 'react'
 
 function App() {
   return (
-    <div>
-      <Homepage />
-    </div>
+    <>
+        Welcome to M-Wallet
+    </>
   );
 }
 
