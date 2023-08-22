@@ -27,10 +27,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 8,
     },
-    goals: [
+    wallets: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Goal",
+            ref: "Wallet",
         },
     ],
 });
