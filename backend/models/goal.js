@@ -11,17 +11,11 @@ const goalSchema = new mongoose.Schema({
         required: true,
         minlength: 10,
     },
-    imagelink: {
+    url: {
         type: String,
         required: true,
         minlength: 10,
-    },
-    wallets: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Wallet",
-        },
-    ],
+    }
 });
 
 goalSchema.set("toJSON", {
