@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
         minlength: 5,
     },
     contact: {
-        type: number,
+        type: Number,
         required: true,
         minlength: 10,
     },

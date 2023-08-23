@@ -5,6 +5,9 @@ const cors = require("cors");
 require("express-async-errors");
 const logger = require("./utils/logger");
 const middleware = require("./middlewares/middleware");
+const usersRouter = require("./controllers/users");
+const goalsRouter = require("./controllers/goals");
+const walletsRouter = require("./controllers/wallets");
 const mongoose = require("mongoose");
 
 mongoose.set("strictQuery", false);
@@ -23,6 +26,10 @@ mongoose
 app.use(cors());
 app.use(express.json());
 app.use(middleware.requestLogger);
+
+app.use("/api/users", usersRouter);
+app.use("/api/goals", goalsRouter);
+app.use("/api/wallets", walletsRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);

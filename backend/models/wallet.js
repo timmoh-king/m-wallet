@@ -1,12 +1,17 @@
 const mongoose = require("mongoose");
 
 const walletSchema = new mongoose.Schema({
+    description: {
+        type: String,
+        required: true,
+        minlength: 10,
+    },
     targetamount: {
-        type: Float,
+        type: Int32Array,
         required: true,
     },
     savedamount: {
-        type: String,
+        type: Int32Array,
     },
     duedate: {
         type: Date,
@@ -19,8 +24,8 @@ const walletSchema = new mongoose.Schema({
             ref: "User",
         },
     ],
-    goal: String,
-    goal: [
+    goaltitle: String,
+    goaltitle: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Goal",
