@@ -51,6 +51,19 @@ walletsRouter.post("/", async (request, response) => {
     response.status(201).json(savedWallet);
 });
 
+walletsRouter.put("/:id", async (request, response) => {
+    const body = request.body;
+
+    const wallet = {
+        savedamount: body.savedamount,
+    };
+
+    updatedWallet = await Wallet.findByIdAndUpdate(request.params.id, wallet, {
+        new: true,
+    });
+    response.status(201).json(updatedWallet);
+});
+
 walletsRouter.delete("/:id", async (request, response) => {
     await Wallet.findByIdAndDelete(request.params.id);
     response.status(204).end();
