@@ -4,9 +4,14 @@ const goalSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        minlength: 5,
+        minlength: 3,
     },
     description: {
+        type: String,
+        required: true,
+        minlength: 10,
+    },
+    imagelink: {
         type: String,
         required: true,
         minlength: 10,
