@@ -7,11 +7,11 @@ const walletSchema = new mongoose.Schema({
         minlength: 10,
     },
     targetamount: {
-        type: Int32Array,
+        type: Number,
         required: true,
     },
     savedamount: {
-        type: Int32Array,
+        type: Number,
     },
     duedate: {
         type: Date,
@@ -33,7 +33,7 @@ const walletSchema = new mongoose.Schema({
     ],
 });
 
-goalSchema.set("toJSON", {
+walletSchema.set("toJSON", {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString();
         delete returnedObject._id;
