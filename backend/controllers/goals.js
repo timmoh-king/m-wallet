@@ -7,7 +7,7 @@ goalsRouter.get("/", async (request, response) => {
 });
 
 goalsRouter.get("/:id", async (request, response) => {
-    const goal = Goal.findById(request.params.id);
+    const goal = await Goal.findById(request.params.id);
     response.json(goal);
 });
 
