@@ -13,7 +13,7 @@ const getTokenFrom = (request) => {
 };
 
 walletsRouter.get("/", async (request, response) => {
-    const wallets = await Wallet.find({});
+    const wallets = await Wallet.find({}).populate();
     response.json(wallets);
 });
 

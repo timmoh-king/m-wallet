@@ -2,7 +2,7 @@ const usersRouter = require("express").Router();
 const User = require("../models/user");
 
 usersRouter.get("/", async (request, response) => {
-    const users = await User.find({}).populate('wallets');
+    const users = await User.find({}).populate();
     response.json(users);
 });
 

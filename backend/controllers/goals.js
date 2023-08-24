@@ -2,7 +2,7 @@ const goalsRouter = require("express").Router();
 const Goal = require("../models/goal");
 
 goalsRouter.get("/", async (request, response) => {
-    const goals = await Goal.find({});
+    const goals = await Goal.find({}).populate();
     response.json(goals);
 });
 
