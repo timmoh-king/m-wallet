@@ -35,6 +35,7 @@ walletsRouter.post("/", async (request, response) => {
     }
 
     const user = await User.findById(decodedToken.id);
+    const goal = await Goal.findById(decodedToken.id)
 
     const wallet = new Wallet({
         title: body.title,
@@ -43,11 +44,14 @@ walletsRouter.post("/", async (request, response) => {
         savedamount: body.savedamount,
         duedate: body.duedate,
         user: user.id,
+        goal: goal.id,
     });
 
     const savedWallet = await wallet.save();
     user.wallets = user.wallets.concat(savedWallet._id);
     await user.save();
+    goal.wallets = goal.wallets.concat(savedWallet._id);
+    await goal.save();
     response.status(201).json(savedWallet);
 });
 

@@ -29,6 +29,13 @@ const walletSchema = new mongoose.Schema({
             ref: "User",
         },
     ],
+    goal: String,
+    goal: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Goal',
+        }
+    ],
 });
 
 walletSchema.set("toJSON", {
