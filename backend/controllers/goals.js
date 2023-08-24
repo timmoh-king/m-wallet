@@ -12,12 +12,12 @@ goalsRouter.get("/:id", async (request, response) => {
 });
 
 goalsRouter.post("/", async (request, response) => {
-    const { title, description, imagelink } = request.body;
+    const { title, description, url } = request.body;
 
     const newGoal = new Goal({
         title,
         description,
-        imagelink,
+        url,
     });
 
     const savedGoal = await newGoal.save();
