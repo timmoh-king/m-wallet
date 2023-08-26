@@ -11,14 +11,19 @@ const usersRouter = require("./controllers/users");
 const goalsRouter = require("./controllers/goals");
 const walletsRouter = require("./controllers/wallets");
 const accessTokenRouter = require("./controllers/daraja/accessToken");
-const registerRouter = require("./controllers/daraja/register");
-const simulationRoutes = require("./controllers/daraja/simulation");
+const registerRouters = require("./controllers/daraja/register");
+const simulationRouter = require("./controllers/daraja/simulation");
+const balanceRouters = require("./controllers/daraja/balance");
 const bodyParser = require('body-parser')
 const mongoose = require("mongoose");
 
-const confirmationRouter = simulationRoutes.confirmationRouter;
-const validationRouter = simulationRoutes.validationRouter;
-const simulationRouter = simulationRoutes.simulationRouter;
+const confirmationRouter = registerRouters.confirmationRouter;
+const validationRouter = registerRouters.validationRouter;
+const registerRouter = registerRouters.registerRouter;
+
+const balanceRouter = balanceRouters.balanceRouter;
+const timeoutUrlRouter = balanceRouters.timeoutUrlRouter;
+const resultUrlRouter = balanceRouters.resultUrlRouter;
 
 mongoose.set("strictQuery", false);
 
@@ -48,6 +53,9 @@ app.use("/api/register", registerRouter);
 app.use("/api/validation", validationRouter);
 app.use("/api/confirmation", confirmationRouter);
 app.use("/api/simulation", simulationRouter);
+app.use("/api/balance", balanceRouter);
+app.use("/api/timeout-url", timeoutUrlRouter);
+app.use("/api/result-url", resultUrlRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);

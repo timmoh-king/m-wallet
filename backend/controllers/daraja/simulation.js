@@ -1,19 +1,7 @@
-const confirmationRouter = require("express").Router();
-const validationRouter = require("express").Router();
 const simulationRouter = require("express").Router();
 const requireAccessToken = require("../../middlewares/middleware")
 const request = require('request');
 const getAccessToken = requireAccessToken.getAccessToken;
-
-confirmationRouter.post("/", async (req, res) => {
-    console.log("-------------------Confirmation------------------");
-    console.log(req.body);
-});
-
-validationRouter.post("/", async (req, res) => {
-    console.log("-------------------Validation------------------");
-    console.log(req.body);
-});
 
 simulationRouter.get('/', async (req, res) => {
     const access_token = await getAccessToken();
@@ -44,11 +32,6 @@ simulationRouter.get('/', async (req, res) => {
             }
         }
     )
-})
+});
 
-
-module.exports = {
-    confirmationRouter,
-    validationRouter,
-    simulationRouter
-};
+module.exports = simulationRouter;
