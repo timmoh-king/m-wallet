@@ -14,6 +14,7 @@ const accessTokenRouter = require("./controllers/daraja/accessToken");
 const registerRouters = require("./controllers/daraja/register");
 const simulationRouter = require("./controllers/daraja/simulation");
 const balanceRouters = require("./controllers/daraja/balance");
+const stkRouter = require("./controllers/daraja/stk");
 const bodyParser = require('body-parser')
 const mongoose = require("mongoose");
 
@@ -56,6 +57,7 @@ app.use("/api/simulation", simulationRouter);
 app.use("/api/balance", balanceRouter);
 app.use("/api/timeout-url", timeoutUrlRouter);
 app.use("/api/result-url", resultUrlRouter);
+app.use("/api/stk", stkRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
