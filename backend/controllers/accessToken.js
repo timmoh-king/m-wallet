@@ -3,7 +3,7 @@ const request = require("request");
 
 accessTokenRouter.get("/", async (req, res) => {
     const url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
-    const auth = new Buffer.from("CneblIufcyZySPoCKTrdO8zs9OkD5eS8:S1cChAMzKjDsmvaJ").toString('base64');
+    const auth = new Buffer.from("F2yw6URqjA6HCo3BTm4aARGuwZ6RQE2e:z82fGB1N0R1JdFU1").toString('base64');
 
     request({
         url: url,
