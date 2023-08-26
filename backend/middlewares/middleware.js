@@ -1,5 +1,17 @@
 const logger = require("../utils/logger");
+const axios = require('axios');
 
+async function getAccessToken() {
+    try {
+        const response = await axios.get("http://localhost:3005/api/accesstoken");
+        const responseBody = response.data;
+        const access_token = responseBody.access_token;
+        return access_token;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}
 const requestLogger = (request, response, next) => {
     logger.info("Method:", request.method);
     logger.info("Path:  ", request.path);
@@ -36,4 +48,5 @@ module.exports = {
     requestLogger,
     unknownEndpoint,
     errorHandler,
+    getAccessToken,
 };

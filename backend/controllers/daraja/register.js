@@ -1,18 +1,7 @@
 const registerRouter = require("express").Router();
+const requireAccessToken = require("../../middlewares/middleware")
 const request = require('request');
-const axios = require('axios');
-
-async function getAccessToken() {
-    try {
-        const response = await axios.get("http://localhost:3005/api/accesstoken");
-        const responseBody = response.data;
-        const access_token = responseBody.access_token;
-        return access_token;
-    } catch (error) {
-        console.error('Error:', error);
-        throw error;
-    }
-}
+const getAccessToken = requireAccessToken.getAccessToken;
 
 registerRouter.get('/', async (req, resp) => {
     const access_token = await getAccessToken();

@@ -13,6 +13,7 @@ const walletsRouter = require("./controllers/wallets");
 const accessTokenRouter = require("./controllers/daraja/accessToken");
 const registerRouter = require("./controllers/daraja/register");
 const simulationRoutes = require("./controllers/daraja/simulation");
+const bodyParser = require('body-parser')
 const mongoose = require("mongoose");
 
 const confirmationRouter = simulationRoutes.confirmationRouter;
@@ -34,6 +35,7 @@ mongoose
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json())
 app.use(middleware.requestLogger);
 
 app.use("/api/users", usersRouter);
