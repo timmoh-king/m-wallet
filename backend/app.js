@@ -11,6 +11,7 @@ const usersRouter = require("./controllers/users");
 const goalsRouter = require("./controllers/goals");
 const walletsRouter = require("./controllers/wallets");
 const accessTokenRouter = require("./controllers/accessToken");
+const registerRouter = require("./controllers/register");
 const mongoose = require("mongoose");
 
 mongoose.set("strictQuery", false);
@@ -36,6 +37,7 @@ app.use("/api/signup", signupRouter);
 app.use("/api/goals", goalsRouter);
 app.use("/api/wallets", walletsRouter);
 app.use("/api/accesstoken", accessTokenRouter);
+app.use("/api/register", registerRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
