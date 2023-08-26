@@ -2,14 +2,12 @@ const confirmationRouter = require("express").Router();
 const validationRouter = require("express").Router();
 const simulationRouter = require("express").Router();
 const request = require('request');
+const axios = require('axios');
 
 async function getAccessToken() {
     try {
-        const response = await request.get({
-            url: "http://localhost:3005/api/accesstoken"
-        });
-
-        const responseBody = response;
+        const response = await axios.get("http://localhost:3005/api/accesstoken");
+        const responseBody = response.data;
         const access_token = responseBody.access_token;
         return access_token;
     } catch (error) {
@@ -28,39 +26,37 @@ validationRouter.post("/", async (req, res) => {
     console.log(req.body);
 });
 
-simulationRouter.get("/", async (req, res) => {
-    try {
-        const access_token = await getAccessToken();
+simulationRouter.get('/', async (req, res) => {
+    const access_token = await getAccessToken();
+    let url = "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate"
+    let auth = "Bearer " + access_token
 
-        let url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-        let auth = "Bearer " + access_token;
-
-        const response = await request.post({
+    request(
+        {
             url: url,
             method: "POST",
             headers: {
-                "Authorization": auth,
+                "Authorization": auth
             },
             json: {
-                "BusinessShortCode": "600990",
-                "Password": "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMTYwMjE2MTY1NjI3",
-                "Timestamp": "20230826161827",
-                "TransactionType": "CustomerPayBillOnline",
-                "Amount": "1",
-                "PartyA": "254708374149",
-                "PartyB": "174379",
-                "PhoneNumber": "254708374149",
-                "CallBackURL": "http://105.160.38.199/pat",
-                "AccountReference": "Test",
-                "TransactionDesc": "Test"
+                "ShortCode": 600986,
+                "CommandID": "CustomerBuyGoodsOnline",
+                "Amount": 1,
+                "Msisdn": 254708374149,
+                "BillRefNumber": "null"
             }
-        })
-        res.status(200).json(response);
-    } catch (error) {
-        res.status(500).json({ error });
-        throw error;
-    }
-});
+        },
+        function (error, response, body) {
+            if (error) {
+                console.log(error)
+            }
+            else {
+                res.status(200).json(body)
+            }
+        }
+    )
+})
+
 
 module.exports = {
     confirmationRouter,
