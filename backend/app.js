@@ -12,7 +12,12 @@ const goalsRouter = require("./controllers/goals");
 const walletsRouter = require("./controllers/wallets");
 const accessTokenRouter = require("./controllers/daraja/accessToken");
 const registerRouter = require("./controllers/daraja/register");
+const simulationRoutes = require("./controllers/daraja/simulation");
 const mongoose = require("mongoose");
+
+const confirmationRouter = simulationRoutes.confirmationRouter;
+const validationRouter = simulationRoutes.validationRouter;
+const simulationRouter = simulationRoutes.simulationRouter;
 
 mongoose.set("strictQuery", false);
 
@@ -38,6 +43,9 @@ app.use("/api/goals", goalsRouter);
 app.use("/api/wallets", walletsRouter);
 app.use("/api/accesstoken", accessTokenRouter);
 app.use("/api/register", registerRouter);
+app.use("/api/validation", validationRouter);
+app.use("/api/confirmation", confirmationRouter);
+app.use("/api/simulation", simulationRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);

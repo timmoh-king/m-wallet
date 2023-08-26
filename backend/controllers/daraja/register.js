@@ -38,7 +38,6 @@ registerRouter.get("/", async (req, res) => {
 
         res.status(200).json(response);
     } catch (error) {
-        console.error('Error:', error);
         res.status(500).json({ error });
         throw error;
     }
