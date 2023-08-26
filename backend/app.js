@@ -10,8 +10,8 @@ const signupRouter = require("./controllers/signup");
 const usersRouter = require("./controllers/users");
 const goalsRouter = require("./controllers/goals");
 const walletsRouter = require("./controllers/wallets");
-const accessTokenRouter = require("./controllers/accessToken");
-const registerRouter = require("./controllers/register");
+const accessTokenRouter = require("./controllers/daraja/accessToken");
+const registerRouter = require("./controllers/daraja/register");
 const mongoose = require("mongoose");
 
 mongoose.set("strictQuery", false);
