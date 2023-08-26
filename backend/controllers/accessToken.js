@@ -12,11 +12,9 @@ accessTokenRouter.get("/", async (req, res) => {
         }
     }, (error, response, body) => {
         if (error) {
-            console.error('Error:', error);
             res.status(500).json({ error: 'A server error occurred' });
         } else {
-            console.log('Response Body:', body);
-            res.status(200).json(body);
+            res.status(200).json(JSON.parse(body));
         }
     });
 });
