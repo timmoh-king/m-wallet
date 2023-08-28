@@ -17,14 +17,14 @@ stkRouter.get('/', async (req, res) => {
             },
             json: {
                 "BusinessShortCode": 174379,
-                "Password": "hbyqvThVbBa+4bTXGSjUL/7lPcu2JnxjdTzLaDXFyZa7aN+wRQJvNkg/kzhrRrYRfBmnklwfkrOZNJv3V9FDilfp3IEvoKDrox+3nDDszzbSQNzpHr6fA+nVvPM84t+SmpRCCsrnIzphKqY1lzVSZMzpiBK/P+3fzyeS+cODU29glkLEXucrRCyHJXR9+f07xKl662qVrEh32YJae/tsFfg+IB4OFmEIxgx2Erflv3NWrVSxL/Pm7LpbVB3PwrUGmOk6IwZK84aLdRkoySD5qVmIZZS9pi/c0POer/ty52oz9dfMhGzHAvm94Mf4MsnJ1lM7+qK4JDQY8xsZ5NXVzw==",
-                "Timestamp": "20230827022938",
+                "Password": "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjMwODI4MTc1OTA0",
+                "Timestamp": '20230828175904',
                 "TransactionType": "CustomerPayBillOnline",
                 "Amount": 1,
-                "PartyA": 254708374149,
+                "PartyA": 254718543357,
                 "PartyB": 174379,
-                "PhoneNumber": 254708374149,
-                "CallBackURL": "http://105.160.38.199/stk_callback",
+                "PhoneNumber": 254718543357,
+                "CallBackURL": "http://105.160.38.199/path",
                 "AccountReference": "CompanyXLTD",
                 "TransactionDesc": "Payment of X"
             }
