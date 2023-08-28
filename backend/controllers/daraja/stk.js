@@ -1,4 +1,5 @@
 const stkRouter = require("express").Router();
+const stkCallbackRouter = require("express").Router();
 const requireAccessToken = require("../../middlewares/middleware")
 const request = require('request');
 const getAccessToken = requireAccessToken.getAccessToken;
@@ -24,7 +25,7 @@ stkRouter.get('/', async (req, res) => {
                 "PartyA": 254718543357,
                 "PartyB": 174379,
                 "PhoneNumber": 254718543357,
-                "CallBackURL": "http://105.160.38.199/path",
+                "CallBackURL": "http://105.160.38.199/stk_callback",
                 "AccountReference": "CompanyXLTD",
                 "TransactionDesc": "Payment of X"
             }
@@ -40,4 +41,12 @@ stkRouter.get('/', async (req, res) => {
     )
 });
 
-module.exports = stkRouter;
+stkCallbackRouter.post('/', (req, res) => {
+    console.log('.......... STK Callback ..................')
+    console.log(JSON.stringify(req.body.Body.stkCallback))
+});
+
+module.exports = {
+    stkRouter,
+    stkCallbackRouter
+};
