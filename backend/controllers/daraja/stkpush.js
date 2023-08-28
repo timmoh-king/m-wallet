@@ -22,9 +22,9 @@ stkRouter.get('/', async (req, res) => {
                 "Timestamp": '20230828175904',
                 "TransactionType": "CustomerPayBillOnline",
                 "Amount": 1,
-                "PartyA": 254718543357,
+                "PartyA": 254111699411,
                 "PartyB": 174379,
-                "PhoneNumber": 254718543357,
+                "PhoneNumber": 254111699411,
                 "CallBackURL": "http://105.160.38.199/stk_callback",
                 "AccountReference": "CompanyXLTD",
                 "TransactionDesc": "Payment of X"

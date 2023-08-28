@@ -24,7 +24,7 @@ b2cRouter.get('/', async (req, res) => {
                 "CommandID": "BusinessPayment",
                 "Amount": 10,
                 "PartyA": 600978,
-                "PartyB": 254708374149,
+                "PartyB": 254111699411,
                 "Remarks": "Test remarks",
                 "QueueTimeOutURL": "http://105.160.38.199/b2c/queue",
                 "ResultURL": "http://105.160.38.199/b2c/result",
