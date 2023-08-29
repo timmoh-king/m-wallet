@@ -49,8 +49,8 @@ stkRouter.get('/', async (req, res) => {
                 "PartyB": 174379,
                 "PhoneNumber": user.contact,
                 "CallBackURL": "http://105.160.38.199/stk_callback",
-                "AccountReference": "CompanyXLTD",
-                "TransactionDesc": "Payment of X"
+                "AccountReference": wallet.title,
+                "TransactionDesc": wallet.description
             }
         },
         function (error, response, body) {
