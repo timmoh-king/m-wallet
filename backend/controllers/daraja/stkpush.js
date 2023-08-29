@@ -1,10 +1,34 @@
+const jwt = require("jsonwebtoken");
 const stkRouter = require("express").Router();
 const requireAccessToken = require("../../middlewares/middleware")
 const request = require('request');
 const getAccessToken = requireAccessToken.getAccessToken;
+const User = require("../../models/user");
+const Wallet = require("../../models/wallet");
+
+const getTokenFrom = (request) => {
+    const authorizationHeader = request.headers["authorization"];
+    if (authorizationHeader && authorizationHeader.startsWith("Bearer ")) {
+        return authorizationHeader.replace("Bearer ", "");
+    }
+    return null;
+};
 
 stkRouter.get('/', async (req, res) => {
     const access_token = await getAccessToken();
+
+    const decodedToken = jwt.verify(getTokenFrom(req), process.env.SECRET);
+    if (!decodedToken.id) {
+        return response.status(401).json({ error: "token invalid" });
+    }
+
+    const user = await User.findById(decodedToken.id);
+    const wallet = await Wallet.findOne({ user: user.id });
+
+    if (!user || !wallet) {
+        return res.status(400).json({ error: "User or wallet not found" });
+    }
+
     let url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
     let auth = "Bearer " + access_token
 
@@ -20,10 +44,10 @@ stkRouter.get('/', async (req, res) => {
                 "Password": "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjMwODI4MTc1OTA0",
                 "Timestamp": '20230828175904',
                 "TransactionType": "CustomerPayBillOnline",
-                "Amount": 1,
+                "Amount": wallet.savedamount,
                 "PartyA": 254718543357,
                 "PartyB": 174379,
-                "PhoneNumber": 254748842351,
+                "PhoneNumber": user.contact,
                 "CallBackURL": "http://105.160.38.199/stk_callback",
                 "AccountReference": "CompanyXLTD",
                 "TransactionDesc": "Payment of X"

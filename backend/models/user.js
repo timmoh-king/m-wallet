@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     contact: {
         type: Number,
         required: true,
-        minlength: 10,
+        minlength: 12,
     },
     email: {
         type: String,
