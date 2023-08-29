@@ -1,5 +1,4 @@
 const stkRouter = require("express").Router();
-const stkCallbackRouter = require("express").Router();
 const requireAccessToken = require("../../middlewares/middleware")
 const request = require('request');
 const getAccessToken = requireAccessToken.getAccessToken;
@@ -41,12 +40,4 @@ stkRouter.get('/', async (req, res) => {
     )
 });
 
-stkCallbackRouter.post('/', (req, res) => {
-    console.log('.......... STK Callback ..................')
-    console.log(JSON.stringify(req.body.Body.stkCallback))
-});
-
-module.exports = {
-    stkRouter,
-    stkCallbackRouter
-};
+module.exports = stkRouter;

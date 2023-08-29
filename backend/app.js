@@ -10,13 +10,11 @@ const signupRouter = require("./controllers/signup");
 const usersRouter = require("./controllers/users");
 const goalsRouter = require("./controllers/goals");
 const walletsRouter = require("./controllers/wallets");
+const newWalletRouter = require("./controllers/newWallet");
 const accessTokenRouter = require("./controllers/daraja/accessToken");
-const stkRouters = require("./controllers/daraja/stkpush");
+const stkRouter = require("./controllers/daraja/stkpush");
 const bodyParser = require('body-parser')
 const mongoose = require("mongoose");
-
-const stkRouter = stkRouters.stkRouter;
-const stkCallbackRouter = stkRouters.stkCallbackRouter;
 
 mongoose.set("strictQuery", false);
 
@@ -41,11 +39,9 @@ app.use("/api/login", loginRouter);
 app.use("/api/signup", signupRouter);
 app.use("/api/goals", goalsRouter);
 app.use("/api/wallets", walletsRouter);
+app.use("/api/new_wallet", newWalletRouter);
 app.use("/api/accesstoken", accessTokenRouter);
 app.use("/api/stk", stkRouter);
-app.use("api/stk_url", stkCallbackRouter);
-
-
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
