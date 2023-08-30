@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React from 'react';
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuthContext } from "../context/UserAuthContextProvider";
 import { Link } from 'react-router-dom';
@@ -6,7 +7,7 @@ import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input'
 
-const WalletSignup = () => {
+const Signup = () => {
   const [inputs, setInputs] = useState({
     firstname: "",
     lastname: "",
@@ -15,9 +16,9 @@ const WalletSignup = () => {
     password: "",
     confirmPassword: ""
   })
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
 
-  const signup = useContext(UserAuthContext);
+  const { signup } = useContext(UserAuthContext);
 
   const navigate = useNavigate();
 
@@ -41,15 +42,19 @@ const WalletSignup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("Hello")
       await signup(inputs);
       navigate("/home");
+      console.log("Hello too");
       clearForm();
     } catch (error) {
       if (error.response && error.response.data) {
+        console.log("Ouch!!!")
         console.log(error);
         setError(error.response.data.error);
       }
       if (inputs.confirmPassword !== inputs.password) {
+        console.log("It must be the password brvh!!!")
         setError("Passwords don't match");
         return;
       }
@@ -94,4 +99,4 @@ const WalletSignup = () => {
   )
 }
 
-export default WalletSignup;
+export default Signup;

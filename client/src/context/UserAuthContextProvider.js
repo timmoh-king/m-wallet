@@ -9,12 +9,12 @@ export const UserAuthContextProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post("http://localhost:3005/api/login", inputs);
+    const res = await axios.post("http://localhost:3005/api/login/", inputs);
     setCurrentUser(res.data);
   };
 
   const signup = async (inputs) => {
-    await axios.post("http://localhost:3005/api/signup", inputs);
+    await axios.post("http://localhost:3005/api/signup/", inputs);
     setCurrentUser(inputs);
   };
 
