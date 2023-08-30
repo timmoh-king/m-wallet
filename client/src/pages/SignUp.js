@@ -1,10 +1,59 @@
-import React from 'react'
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserAuthContext } from "../context/UserAuthContextProvider";
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
 import Input from '../components/Input'
 
-const Signup = ({to}) => {
+const Signup = () => {
+  const[inputs, setInputs] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    contact: "",
+    password: "",
+    confirmPassword: ""
+  })
+  const[error, setError] = useState('')
+
+  const {signup} = useContext(UserAuthContext)
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setInputs((prev) => ({...prev, [name]: value}))
+    console.log(inputs)
+  }
+
+  const clearForm = () => {
+    setInputs({
+      firstname: "",
+      lastname: "",
+      email: "",
+      contact: "",
+      password: "",
+      confirmPassword: ""
+    })
+  }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    try{
+      await signup(inputs);
+      navigate("/home")
+      clearForm()
+    } catch (error){
+      console.log(error)
+      setError(error.response.data.error)
+    }
+    if (inputs.confirmPassword !== inputs.password) {
+      setError("Passwords don't match");
+      return;
+    }
+  }
+
   return (
     <div className='bg-grayBackground h-[100vh] items-center'>
       <Navbar />
@@ -15,26 +64,28 @@ const Signup = ({to}) => {
                 <p className='text-sm text-blackText text-start'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
             </div>
             <div className='flex flex-row items-center justify-between'>
-                <Link className='text-sm text-blackText hover:text-skyBlue' to={to}>Don't have an account?</Link>
+                <Link className='text-sm text-blackText hover:text-skyBlue' to='/signin'>Already have an account?</Link>
                 <div className='justify-end'>
-                    <Button buttonName="Sign in" buttonStyle='bg-navyBlue w-[130px] text-semibold text-white hover:bg-white hover:text-black hover:font-bold hover:ring-1 hover:ring-navyBlue' />
+                    <Button linkTo="/signin" buttonName="Sign in" buttonStyle='bg-navyBlue w-[130px] text-semibold text-white hover:bg-white hover:text-black hover:font-bold hover:ring-1 hover:ring-navyBlue' />
                 </div>
             </div>
         </div>
         <div className='justify-end flex flex-col space-y-0 md:w-1/2'>
-            <form>
-              <Input labelName='Firstname' placeHolder='Enter firstname' isRequired={true} name='firstname' inputStyle='w-full' inputType='text' />
-              <Input labelName='Lastname' placeHolder='Enter lastname' isRequired={true} name='lastname' inputStyle='w-full' inputType='text' />
-              <Input labelName='Contact' placeHolder='Enter phone number' isRequired={true} name='phone-number' inputStyle='w-full' inputType='number' />
-              <Input labelName='Email' placeHolder='Enter email' isRequired={true} name='email' inputStyle='w-full' />
+            <form onSubmit={handleSubmit}>
+              <Input index="user-signup-firstname" onChange={handleChange} inputValue={inputs.firstname} labelName='Firstname' placeHolder='Enter firstname' isRequired={true} name='firstname' inputStyle='w-full' inputType='text' />
+              <Input index="user-signup-lastname" onChange={handleChange} inputValue={inputs.lastname} labelName='Lastname' placeHolder='Enter lastname' isRequired={true} name='lastname' inputStyle='w-full' inputType='text' />
+              <Input index="user-signup-contact" onChange={handleChange} inputValue={inputs.contact} labelName='Contact' placeHolder='Enter phone number' isRequired={true} name='phone-number' inputStyle='w-full' inputType='number' />
+              <Input index="user-signup-email" onChange={handleChange} inputValue={inputs.email} labelName='Email' placeHolder='Enter email' isRequired={true} name='email' inputStyle='w-full' />
               <div className='flex flex-row space-x-3 justify-between'>
-                <Input labelName='New password' placeHolder='Enter new password' isRequired={true} name='password' inputStyle='w-full' inputType='password' />
-                <Input labelName='Confirm password' placeHolder='Confirm new password' isRequired={true} name='password' inputStyle='w-full' inputType='password' />
+                <Input index="user-signup-password" onChange={handleChange} inputValue={inputs.password} labelName='New password' placeHolder='Enter new password' isRequired={true} name='password' inputStyle='w-full' inputType='password' />
+                <Input index="user-signup-confirm" onChange={handleChange} inputValue={inputs.confirmPassword} labelName='Confirm password' placeHolder='Confirm new password' isRequired={true} name='password' inputStyle='w-full' inputType='password' />
               </div>
               <div className='flex justify-end'>
-                <Link className='text-sm text-blackText py-2 hover:text-skyBlue' to={to}>Don't have an account?</Link>
+                <Link className='text-sm text-blackText py-2 hover:text-skyBlue' to='/signin'>Already have an account?</Link>
             </div>
-            <Button buttonName="Save password" buttonStyle='bg-skyBlue w-full text-semibold text-white hover:bg-white hover:text-black hover:ring-1 hover:font-bold hover:ring-skyBlue' />
+            <br />
+              <p className="text-miliki-red">{error}</p>
+            <Button linkTo='/home' buttonName="Sign up" buttonStyle='bg-skyBlue w-full text-semibold text-white hover:bg-white hover:text-black hover:ring-1 hover:font-bold hover:ring-skyBlue' />
             </form> 
         </div>
       </div>
@@ -42,4 +93,4 @@ const Signup = ({to}) => {
   )
 }
 
-export default Signup
+export default Signup;

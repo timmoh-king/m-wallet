@@ -16,7 +16,7 @@ export const UserAuthContextProvider = ({ children }) => {
     await axios.post("http://localhost:3005/api/signup", inputs);
     setCurrentUser(inputs);
   };
-  
+
   const logout = () => {
     setCurrentUser(null)
   }
@@ -26,10 +26,8 @@ export const UserAuthContextProvider = ({ children }) => {
   }, [currentUser]);
 
   return (
-    <>
     <UserAuthContext.Provider value={{ currentUser, login, signup, logout }}>
       {children}
     </UserAuthContext.Provider>
-    </>
   );
 };

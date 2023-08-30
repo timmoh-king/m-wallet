@@ -1,10 +1,11 @@
 import React from 'react'
+import SignUp from './pages/SignUp'
 
 
 function App() {
   return (
     <>
-      Welcome to M-Wallet
+      <SignUp />
     </>
   );
 }
