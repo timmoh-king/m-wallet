@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+
 export const UserAuthContext = createContext();
 
 export const UserAuthContextProvider = ({ children }) => {
@@ -18,8 +19,8 @@ export const UserAuthContextProvider = ({ children }) => {
   };
 
   const logout = () => {
-    setCurrentUser(null)
-  }
+    setCurrentUser(null);
+  };
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(currentUser));

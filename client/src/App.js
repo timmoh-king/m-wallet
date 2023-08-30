@@ -1,11 +1,9 @@
-import React from 'react'
-import SignUp from './pages/SignUp'
-
+import WalletSignup from './pages/SignUp';
 
 function App() {
   return (
     <>
-      <SignUp />
+      <WalletSignup />
     </>
   );
 }
