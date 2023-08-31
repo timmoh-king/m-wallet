@@ -4,17 +4,22 @@ const userSchema = new mongoose.Schema({
     firstname: {
         type: String,
         required: true,
-        minlength: 5,
+        minlength: 3,
     },
     lastname: {
         type: String,
         required: true,
-        minlength: 5,
+        minlength: 3,
     },
     contact: {
         type: Number,
         required: true,
-        minlength: 12,
+        validate: {
+            validator: function(value) {
+                return value.toString().length >= 12;
+            },
+            message: "Contact must have at least 12 digits.",
+        },
     },
     email: {
         type: String,

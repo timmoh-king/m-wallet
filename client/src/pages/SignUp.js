@@ -25,7 +25,7 @@ const Signup = () => {
   const handleChange = (e) => {
     const { name, value } = e.target
     setInputs((prev) => ({ ...prev, [name]: value }))
-    console.log(inputs)
+    console.log(inputs);
   }
 
   const clearForm = () => {
@@ -39,27 +39,21 @@ const Signup = () => {
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    try {
-      console.log("Hello")
+    try{
       await signup(inputs);
-      navigate("/home");
-      console.log("Hello too");
-      clearForm();
-    } catch (error) {
-      if (error.response && error.response.data) {
-        console.log("Ouch!!!")
-        console.log(error);
-        setError(error.response.data.error);
-      }
-      if (inputs.confirmPassword !== inputs.password) {
-        console.log("It must be the password brvh!!!")
-        setError("Passwords don't match");
-        return;
-      }
+      navigate("/home")
+      clearForm()
+    } catch (error){
+      setError(error.response.data.error)
     }
-  };
+    if (inputs.confirmPassword !== inputs.password) {
+      setError("Passwords don't match");
+      return;
+    }
+  }
+
 
 
   return (
@@ -80,17 +74,18 @@ const Signup = () => {
         </div>
         <div className='justify-end flex flex-col space-y-0 md:w-1/2'>
           <form onSubmit={handleSubmit}>
-            <Input index="user-signup-firstname" onChange={handleChange} inputValue={inputs.firstname} labelName='Firstname' placeHolder='Enter firstname' isRequired={true} inputName='firstname' inputStyle='w-full' inputType='text' error={error} />
-            <Input index="user-signup-lastname" onChange={handleChange} inputValue={inputs.lastname} labelName='Lastname' placeHolder='Enter lastname' isRequired={true} inputName='lastname' inputStyle='w-full' inputType='text' error={error} />
-            <Input index="user-signup-contact" onChange={handleChange} inputValue={inputs.contact} labelName='Contact' placeHolder='Enter contact (start with 254)' isRequired={true} inputName='contact' inputStyle='w-full' inputType='number' error={error} />
-            <Input index="user-signup-email" onChange={handleChange} inputValue={inputs.email} labelName='Email' placeHolder='Enter email' isRequired={true} inputName='email' inputStyle='w-full' error={error} />
+            <Input index="user-signup-firstname" onChange={handleChange} inputValue={inputs.firstname} labelName='Firstname' placeHolder='Enter firstname' isRequired={true} inputName='firstname' inputStyle='w-full' inputType='text' />
+            <Input index="user-signup-lastname" onChange={handleChange} inputValue={inputs.lastname} labelName='Lastname' placeHolder='Enter lastname' isRequired={true} inputName='lastname' inputStyle='w-full' inputType='text' />
+            <Input index="user-signup-contact" onChange={handleChange} inputValue={inputs.contact} labelName='Contact' placeHolder='Enter contact (start with 254)' isRequired={true} inputName='contact' inputStyle='w-full' inputType='number' />
+            <Input index="user-signup-email" onChange={handleChange} inputValue={inputs.email} labelName='Email' placeHolder='Enter email' isRequired={true} inputName='email' inputStyle='w-full' />
             <div className='flex flex-row space-x-3 justify-between'>
-              <Input index="user-signup-password" onChange={handleChange} inputValue={inputs.password} labelName='New password' placeHolder='Enter new password' isRequired={true} inputName='password' inputStyle='w-full' inputType='password' error={error} />
-              <Input index="user-signup-confirm" onChange={handleChange} inputValue={inputs.confirmPassword} labelName='Confirm password' placeHolder='Confirm your password' isRequired={true} inputName='confirmPassword' inputStyle='w-full' inputType='password' error={error} />
+              <Input index="user-signup-password" onChange={handleChange} inputValue={inputs.password} labelName='New password' placeHolder='Enter new password' isRequired={true} inputName='password' inputStyle='w-full' inputType='password' />
+              <Input index="user-signup-confirm" onChange={handleChange} inputValue={inputs.confirmPassword} labelName='Confirm password' placeHolder='Confirm your password' isRequired={true} inputName='confirmPassword' inputStyle='w-full' inputType='password' />
             </div>
             <div className='flex justify-end'>
               <Link className='text-sm text-blackText py-2 hover:text-skyBlue' to='/signin'>Already have an account?</Link>
             </div>
+            <p className='text-red py-2 text-sm'>{error}</p>
             <Button to='/home' buttonName="Sign up" buttonStyle='bg-skyBlue w-full text-semibold text-white hover:bg-white hover:text-black hover:ring-1 hover:font-bold hover:ring-skyBlue' />
           </form>
         </div>
