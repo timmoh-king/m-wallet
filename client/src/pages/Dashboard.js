@@ -2,9 +2,20 @@ import React from 'react';
 import Logo from '../components/Logo'
 import Button from '../components/Button';
 import AdminCards from '../components/AdminCards';
+import { useContext } from "react";
+import { UserAuthContext } from "../context/UserAuthContextProvider";
+import { useNavigate } from "react-router-dom";
 import GoalCard from '../components/GoalCard';
 
 export const AdminNav = () => {
+    const { logout } = useContext(UserAuthContext);
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        await logout;
+        navigate('/')
+    }
+
     return (
         <div className='w-full shadow-lg'>
             <div className='bg-white container flex flex-row mx-auto justify-between py-3 px-6'>
@@ -13,7 +24,7 @@ export const AdminNav = () => {
                 </div>
                 <div className='flex flex-row space-x-3'>
                     <Button buttonName="My goals" buttonStyle="hidden w-[130px] p-2 px-6 text-white bg-navyBlue font-semibold baseline hover:ring-1 hover:ring-navyBlue hover:text-black hover:bg-white md:block " />
-                    <Button buttonName="Log out" buttonStyle="hidden w-[130px] p-2 px-6 text-white bg-navyBlue font-semibold baseline hover:ring-1 hover:ring-navyBlue hover:text-black hover:bg-white md:block " />
+                    <Button to='/' buttonName="Log out" onClick={handleLogout} buttonStyle="hidden w-[130px] p-2 px-6 text-white bg-navyBlue font-semibold baseline hover:ring-1 hover:ring-navyBlue hover:text-black hover:bg-white md:block " />
                 </div>
             </div>
         </div>
@@ -34,21 +45,29 @@ export const NewGoalCards = () => {
 export const MyGoals = () => {
     return (
         <div className='container mx-auto flex flex-row px-6 mt-4 space-x-4'>
-        <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
-        <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
-        <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
-        <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
-    </div>
+            <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
+            <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
+            <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
+            <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
+        </div>
     )
 }
 
 const Dashboard = () => {
+    const { currentUser } = useContext(UserAuthContext);
     return (
-        <div className='flex flex-col items-center'>
-            <AdminNav />
-            <NewGoalCards />
-            <MyGoals />
-        </div>
+        <>
+        {
+        currentUser ?
+            <div className='flex flex-col items-center'>
+                <AdminNav />
+                <NewGoalCards />
+                <MyGoals />
+            </div>
+            :
+            <></>
+        }
+        </>
     )
 }
 

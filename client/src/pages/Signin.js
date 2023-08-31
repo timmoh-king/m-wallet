@@ -62,7 +62,7 @@ const Signin = () => {
         <div className='justify-end flex flex-col space-y-4 md:w-1/2'>
           <form onSubmit={handleSubmit}>
             <Input index="user-signin-email" onChange={handleChange} inputValue={inputs.email} labelName='Email' placeHolder='Enter email' isRequired={true} inputName='email' inputStyle='w-full' />
-            <Input index="user-signin-password" onChange={handleChange} inputValue={inputs.password} labelName='New password' placeHolder='Enter new password' isRequired={true} inputName='password' inputStyle='w-full' inputType='password' />
+            <Input index="user-signin-password" onChange={handleChange} inputValue={inputs.password} labelName='Enter password' placeHolder='Enter new password' isRequired={true} inputName='password' inputStyle='w-full' inputType='password' />
             <div className='flex justify-end'>
               <Link className='text-sm text-blackText py-2 hover:text-skyBlue' to='/signup'>Don't have an account?</Link>
             </div>
