@@ -54,8 +54,6 @@ const Signup = () => {
     }
   }
 
-
-
   return (
     <div className='bg-grayBackground h-[100vh] items-center'>
       <Navbar />
