@@ -1,10 +1,12 @@
 import React from 'react';
-import Logo from '../components/Logo'
-import Button from '../components/Button';
-import AdminCards from '../components/AdminCards';
+import axios from 'axios';
+import  { useState, useEffect } from 'react';
 import { useContext } from "react";
 import { UserAuthContext } from "../context/UserAuthContextProvider";
 import { useNavigate } from "react-router-dom";
+import Logo from '../components/Logo';
+import Button from '../components/Button';
+import AdminCards from '../components/AdminCards';
 import GoalCard from '../components/GoalCard';
 
 export const AdminNav = () => {
@@ -32,23 +34,63 @@ export const AdminNav = () => {
 }
 
 export const NewGoalCards = () => {
+    const [goals, setGoals] = useState([]);
+
+    useEffect(() => {
+        const getGoals = async () => {
+            try {
+                const response = await axios.get("http://localhost:3005/api/goals/");
+                setGoals(response.data);
+            } catch (error) {
+                console.log(error.response.data.error);
+            }
+        };
+
+        getGoals();
+    }, []);
+
     return (
         <div className='container mx-auto flex flex-row px-6 mt-4 space-x-4'>
-            <AdminCards imgsrc='https://th.bing.com/th/id/OIP.JTisQJsahAv588u8Uc-6dgHaEK?w=326&h=183&c=7&r=0&o=5&pid=1.7' imgalt='vacation' cardtitle='Vacation' cardtext='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' />
-            <AdminCards imgsrc='https://th.bing.com/th/id/OIP.wALz0aaNBv8_dVhBlvpfyQHaE8?w=251&h=180&c=7&r=0&o=5&pid=1.7' imgalt='vacation' cardtitle='Vacation' cardtext='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' />
-            <AdminCards imgsrc='https://th.bing.com/th/id/OIP.eqQ7OE5ZU9t15EyJNrZcBwHaE7?w=225&h=180&c=7&r=0&o=5&pid=1.7' imgalt='vacation' cardtitle='Vacation' cardtext='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' />
-            <AdminCards imgsrc='https://th.bing.com/th/id/OIP.sHRReg7bPHn7IcXvrcxrxQHaET?w=317&h=183&c=7&r=0&o=5&pid=1.7' imgalt='vacation' cardtitle='Vacation' cardtext='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' />
+            {goals.map((goal) => (
+                <AdminCards
+                    key={goal._id}
+                    imgsrc={goal.url}
+                    cardtitle={goal.title}
+                    cardtext={goal.description}
+                />
+            ))}
         </div>
     )
 };
 
 export const MyGoals = () => {
+    const [wallets, setWallets] = useState([]);
+
+    useEffect(() => {
+        const getWallets = async () => {
+            try {
+                const response = await axios.get("http://localhost:3005/api/wallets/");
+                console.log(response);
+                setWallets(response.data);
+            } catch (error) {
+                console.log(error.response.data.error);
+            }
+        };
+
+        getWallets();
+    }, []);
+
     return (
         <div className='container mx-auto flex flex-row px-6 mt-4 space-x-4'>
-            <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
-            <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
-            <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
-            <GoalCard goaltitle='Field Trip' date='29/03/2024' targetAmt='17678' savedAmt='8765' />
+            {wallets.map((wallets) => (
+                <GoalCard
+                    key={wallets._id}
+                    goaltitle={wallets.title}
+                    date={wallets.duedate}
+                    targetAmt={wallets.targetamount}
+                    savedAmt={wallets.savedamount}
+                />
+            ))}
         </div>
     )
 }

@@ -11,7 +11,7 @@ const AdminCards = ({imgsrc, imgalt, cardtitle, cardtext}) => {
       <div className='px-3 mt-[-80px]'>
         <p className='text-white font-medium text-sm hover:animate-bounce'>{cardtext}</p>
       </div>
-      <div className='px-2 pt-3 pb-2'>
+      <div className='px-2 pt-3 pb-2 mt-8'>
         <Button buttonName='create goal' buttonStyle='text-white font-medium font-sm w-[126px] bg-skyBlue rounded-md'/>
       </div>
     </div>

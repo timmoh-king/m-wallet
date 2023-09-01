@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { format } = require("date-fns");
 
 const walletSchema = new mongoose.Schema({
     title: {
@@ -21,6 +22,8 @@ const walletSchema = new mongoose.Schema({
     duedate: {
         type: Date,
         required: true,
+        get: (val) => format(val, "dd/MM/yy"),
+        set: (val) => new Date(val),
     },
     user: String,
     user: [
