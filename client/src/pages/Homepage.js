@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom"
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Button from '../components/Button';
@@ -60,14 +61,15 @@ export const HeroSection = () => {
 };
 
 export const ExploreSection = () => {
+    const navigate = useNavigate();
     return (
         <section className='bg-white'>
             <div className='container mx-auto flex flex-row items-center justify-between space-x-6 mt-20 mb-16 px-14'>
                 <div className='md:w-1/2'>
                     <TitleComponent imgsrc={chatLeftDotsFill} imgalt="message icon" imgtitle="Get to know us"/>
                     <div className='w-full flex flex-row space-x-3  mb-24 pt-8'>
-                        <Button buttonName="Sign in" buttonStyle="hidden w-[130px] p-2 px-6 text-black bg-white font-semibold baseline ring-1 ring-navyBlue hover:text-white hover:bg-navyBlue md:block " />
-                        <Button buttonName="Register" buttonStyle="hidden w-[130px] p-2 px-6 text-white bg-navyBlue font-semibold baseline hover:ring-1 hover:ring-navyBlue hover:text-black hover:bg-white md:block " />
+                        <Button onClick={() => navigate('/signin')} buttonName="Signin" buttonStyle="hidden w-[130px] p-2 px-6 text-black bg-white font-semibold baseline ring-1 ring-navyBlue hover:text-white hover:bg-navyBlue md:block " />
+                        <Button onClick={() => navigate('/signup')} buttonName="Register" buttonStyle="hidden w-[130px] p-2 px-6 text-white bg-navyBlue font-semibold baseline hover:ring-1 hover:ring-navyBlue hover:text-black hover:bg-white md:block " />
                     </div>
                 </div>
                 <div className='flex flex-col items-center justify-between md:w-1/2'>
@@ -112,13 +114,14 @@ export const OfferSection = () => {
 };
 
 export const EventSection = () => {
+    const navigate = useNavigate();
     return (
         <section className='bg-white'>
             <div className='container mx-auto flex flex-row items-center justify-between space-x-6 mt-16 mb-16 px-14'>
                 <div className='md:w-1/2'>
                     <TitleComponent imgsrc={calenderEventFill} imgalt="calender icon" imgtitle="Events featured"/>
                     <div className='w-full flex flex-row space-x-3  mb-24 pt-8'>
-                        <Button buttonName="Register" buttonStyle="hidden w-[130px] p-2 px-6 text-black bg-white font-semibold baseline ring-1 ring-navyBlue hover:text-white hover:bg-navyBlue md:block " />
+                        <Button onClick={() => navigate('/signup')} buttonName="Register" buttonStyle="hidden w-[130px] p-2 px-6 text-black bg-white font-semibold baseline ring-1 ring-navyBlue hover:text-white hover:bg-navyBlue md:block " />
                     </div>
                 </div>
                 <div className='flex flex-col items-center justify-between md:w-1/2'>
@@ -162,11 +165,12 @@ export const TestimonialSection = () => {
 };
 
 export const SubscribeSection = () => {
+    const navigate = useNavigate();
     return (
         <div className=''>
             <div className='bg-white container flex flex-row mx-auto shadow-lg items-center justify-between rounded-md px-14 py-4 mt-[-36px] m'>
                 <p className='text-xl font-bold text-navyBlue pb-1'>Join us today and start your journey</p>
-                <Button buttonName="Register" buttonStyle="hidden w-[130px] p-2 px-6 text-white bg-navyBlue font-semibold baseline hover:ring-1 hover:ring-navyBlue hover:text-black hover:bg-white md:block " />
+                <Button onClick={() => navigate('/signup')} buttonName="Register" buttonStyle="hidden w-[130px] p-2 px-6 text-white bg-navyBlue font-semibold baseline hover:ring-1 hover:ring-navyBlue hover:text-black hover:bg-white md:block " />
             </div>
         </div>
         

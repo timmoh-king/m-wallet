@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import facebook from "../assets/facebook.svg";
 import instagram from "../assets/instagram.svg";
@@ -7,6 +7,7 @@ import twitter from "../assets/twitter.svg";
 import linkedin from "../assets/linkedin.svg";
 
 const Footer = ({to}) => {
+  const navigate = useNavigate();
   return (
     <footer className='bg-white'>
       <div className='container flex flex-col-reverse justify-between items-center px-6 py-10 mx-auto space-y-8 md:flex-row md:space-y-0'>
@@ -59,6 +60,7 @@ const Footer = ({to}) => {
                         <input type="text" className="text-smflex-1 px-1 rounded-md focus:outline-skyBlue"
                             placeholder="Updated in your inbox" />
                         <button
+                            onClick={() => navigate('/signup')}
                             className="px-6 py-2 text-white rounded-md bg-navyBlue hover:bg-white hover:ring-1 hover:ring-navyBlue hover:text-black focus:outline-none">
                             Get Started
                         </button>
