@@ -7,6 +7,7 @@ const logger = require("./utils/logger");
 const middleware = require("./middlewares/middleware");
 const loginRouter = require("./controllers/signin");
 const signupRouter = require("./controllers/signup");
+const logoutRouter = require("./controllers/logout");
 const usersRouter = require("./controllers/users");
 const goalsRouter = require("./controllers/goals");
 const walletsRouter = require("./controllers/wallets");
@@ -37,6 +38,7 @@ app.use(middleware.requestLogger);
 app.use("/api/users", usersRouter);
 app.use("/api/signin", loginRouter);
 app.use("/api/signup", signupRouter);
+app.use("/api/logout", logoutRouter)
 app.use("/api/goals", goalsRouter);
 app.use("/api/wallets", walletsRouter);
 app.use("/api/new_wallet", newWalletRouter);
@@ -45,5 +47,5 @@ app.use("/api/stk", stkRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
-
+app.use(middleware.checkTokenBlacklist)
 module.exports = app;

@@ -24,6 +24,16 @@ const unknownEndpoint = (request, response) => {
     response.status(404).send({ error: "unknown endpoint" });
 };
 
+const checkTokenBlacklist = (req, res, next) => {
+    const token = req.headers.authorization;
+  
+    if (token && tokenBlacklist.has(token)) {
+      return res.status(401).json({ message: 'Token is blacklisted' });
+    }
+  
+    next();
+  };
+
 const errorHandler = (error, request, response, next) => {
     logger.error(error.message);
 
@@ -49,4 +59,5 @@ module.exports = {
     unknownEndpoint,
     errorHandler,
     getAccessToken,
+    checkTokenBlacklist
 };
