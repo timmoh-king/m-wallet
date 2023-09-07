@@ -11,6 +11,7 @@ const logoutRouter = require("./controllers/logout");
 const usersRouter = require("./controllers/users");
 const goalsRouter = require("./controllers/goals");
 const walletsRouter = require("./controllers/wallets");
+const userWalletRouter = require("./controllers/userWallet");
 const newWalletRouter = require("./controllers/newWallet");
 const accessTokenRouter = require("./controllers/daraja/accessToken");
 const stkRouter = require("./controllers/daraja/stkpush");
@@ -41,11 +42,13 @@ app.use("/api/signup", signupRouter);
 app.use("/api/logout", logoutRouter)
 app.use("/api/goals", goalsRouter);
 app.use("/api/wallets", walletsRouter);
+app.use("/api/get_wallets", userWalletRouter);
 app.use("/api/new_wallet", newWalletRouter);
 app.use("/api/accesstoken", accessTokenRouter);
 app.use("/api/stk", stkRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
-app.use(middleware.checkTokenBlacklist)
+app.use(middleware.checkTokenBlacklist);
+
 module.exports = app;

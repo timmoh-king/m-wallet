@@ -69,7 +69,7 @@ export const MyGoals = () => {
     useEffect(() => {
         const getWallets = async () => {
             try {
-                const response = await axios.get("http://localhost:3005/api/wallets/");
+                const response = await axios.get("http://localhost:3005/api/get_wallets/");
                 console.log(response);
                 setWallets(response.data);
             } catch (error) {
