@@ -18,9 +18,10 @@ export const UserAuthContextProvider = ({ children }) => {
     setCurrentUser(inputs);
   };
 
-  const logout = async (inputs) => {
-    await axios.post("http://localhost:3005/api/logout/", inputs);
+  const logout = async () => {
+    localStorage.removeItem("user");
     setCurrentUser(null);
+    await axios.post("http://localhost:3005/api/logout/");
   };
 
   useEffect(() => {

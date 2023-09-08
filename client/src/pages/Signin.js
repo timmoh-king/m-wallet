@@ -22,7 +22,6 @@ const Signin = () => {
   const handleChange = (e) => {
     const { name, value } = e.target
     setInputs((prev) => ({ ...prev, [name]: value }))
-    console.log(inputs);
   }
 
   const clearForm = () => {
