@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import  { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import  { useState, useEffect, useMemo } from 'react';
 import { useContext } from "react";
 import { UserAuthContext } from "../context/UserAuthContextProvider";
 import { useNavigate } from "react-router-dom";
@@ -52,8 +53,9 @@ export const NewGoalCards = () => {
     return (
         <div className='container mx-auto flex flex-row px-6 mt-4 space-x-4'>
             {goals.map((goal) => (
-                <div key={goal._id}>
+                <div key={uuidv4()}>
                     <AdminCards
+                        key={goal._id}
                         imgsrc={goal.url}
                         cardtitle={goal.title}
                         cardtext={goal.description}
@@ -66,19 +68,21 @@ export const NewGoalCards = () => {
 
 export const MyGoals = () => {
     const [wallets, setWallets] = useState([]);
-    const token = localStorage.getItem('token');
-    console.log(token);
-    const config = {
-        headers: {
-            'Authorization': `Bearer ${token}`
-      }
-    }
+    const userJSONString = localStorage.getItem('user');
+    const userObject = JSON.parse(userJSONString);
+    const token = userObject.token;
+    const config = useMemo(() => {
+        return {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        };
+    }, [token]);
 
     useEffect(() => {
         const getWallets = async () => {
             try {
-                const response = await axios.get("http://localhost:3005/api/wallets/", config);
-                console.log(response);
+                const response = await axios.get("http://localhost:3005/api/get_wallets/", config);
                 setWallets(response.data);
             } catch (error) {
                 console.log(error.response.data.error);
@@ -86,13 +90,14 @@ export const MyGoals = () => {
         };
 
         getWallets();
-    }, []);
+    }, [config]);
 
     return (
         <div className='container mx-auto flex flex-row px-6 mt-4 space-x-4'>
             {wallets.map((wallets) => (
-                <div key={wallets._id}>
+                <div key={uuidv4()}>
                     <GoalCard
+                        key={wallets._id}
                         goaltitle={wallets.title}
                         date={wallets.duedate}
                         targetAmt={wallets.targetamount}
