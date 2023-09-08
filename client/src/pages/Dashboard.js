@@ -52,12 +52,13 @@ export const NewGoalCards = () => {
     return (
         <div className='container mx-auto flex flex-row px-6 mt-4 space-x-4'>
             {goals.map((goal) => (
-                <AdminCards
-                    key={goal._id}
-                    imgsrc={goal.url}
-                    cardtitle={goal.title}
-                    cardtext={goal.description}
-                />
+                <div key={goal._id}>
+                    <AdminCards
+                        imgsrc={goal.url}
+                        cardtitle={goal.title}
+                        cardtext={goal.description}
+                    />
+                </div>
             ))}
         </div>
     )
@@ -83,13 +84,14 @@ export const MyGoals = () => {
     return (
         <div className='container mx-auto flex flex-row px-6 mt-4 space-x-4'>
             {wallets.map((wallets) => (
-                <GoalCard
-                    key={wallets._id}
-                    goaltitle={wallets.title}
-                    date={wallets.duedate}
-                    targetAmt={wallets.targetamount}
-                    savedAmt={wallets.savedamount}
-                />
+                <div key={wallets._id}>
+                    <GoalCard
+                        goaltitle={wallets.title}
+                        date={wallets.duedate}
+                        targetAmt={wallets.targetamount}
+                        savedAmt={wallets.savedamount}
+                    />
+                </div>
             ))}
         </div>
     )
