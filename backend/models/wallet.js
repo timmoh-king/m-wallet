@@ -10,7 +10,7 @@ const walletSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
-        minlength: 5,
+        minlength: 1055,
     },
     targetamount: {
         type: Number,
