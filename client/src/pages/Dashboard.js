@@ -66,11 +66,18 @@ export const NewGoalCards = () => {
 
 export const MyGoals = () => {
     const [wallets, setWallets] = useState([]);
+    const token = localStorage.getItem('token');
+    console.log(token);
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
+      }
+    }
 
     useEffect(() => {
         const getWallets = async () => {
             try {
-                const response = await axios.get("http://localhost:3005/api/get_wallets/");
+                const response = await axios.get("http://localhost:3005/api/wallets/", config);
                 console.log(response);
                 setWallets(response.data);
             } catch (error) {

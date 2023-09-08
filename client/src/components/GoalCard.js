@@ -3,6 +3,9 @@ import Button from './Button';
 import Input from './Input';
 
 const GoalCard = ({ goaltitle, date, targetAmt, savedAmt }) => {
+  const handleChange = () => {
+    console.log('coming soon!!')
+  }
   return (
     <div className='bg-white max-w-sm rounded-md overflow-hidden shadow-lg'>
       <div className='flex flex-col items-center px-2 space-y-1'>
@@ -25,7 +28,7 @@ const GoalCard = ({ goaltitle, date, targetAmt, savedAmt }) => {
             <p className='text-black font-semibold text-[13px] mt-2'>Ksh.{savedAmt}</p>
         </div>
         <div className='w-full py-2 px-2'>
-            <Input labelName='save' placeHolder='Enter amount' inputName='savedamt' inputValue='savedamt' inputType='number' inputStyle='w-full bg-gray-100' />
+            <Input labelName='save' onChange={handleChange} placeHolder='Enter amount' inputName='savedamt' inputValue='savedamt' inputType='number' inputStyle='w-full bg-gray-100'  />
         </div>
         <div className='py-2 px-2 w-full'>
             <Button buttonName='Save' buttonStyle='text-white font-medium w-full font-sm bg-green rounded-md'/>
