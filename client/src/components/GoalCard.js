@@ -1,11 +1,32 @@
 import React from 'react';
+import axios from 'axios';
 import Button from './Button';
 import Input from './Input';
+import { useState } from "react";
 
 const GoalCard = ({ goaltitle, date, targetAmt, savedAmt }) => {
-  const handleChange = () => {
-    console.log('coming soon!!')
+  const [amount, setAmount] = useState(0);
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setAmount((prev) => ({ ...prev, [name]: value }))
   }
+
+  const clearForm = () => {
+    setAmount(0)
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.get("http://localhost:3005/api/stk/");
+      clearForm()
+    } catch (error) {
+      setError(error.response.data.error)
+    }
+  }
+
   return (
     <div className='bg-white max-w-sm rounded-md overflow-hidden shadow-lg'>
       <div className='flex flex-col items-center px-2 space-y-1'>
@@ -28,8 +49,11 @@ const GoalCard = ({ goaltitle, date, targetAmt, savedAmt }) => {
             <p className='text-black font-semibold text-[13px] mt-2'>Ksh.{savedAmt}</p>
         </div>
         <div className='w-full py-2 px-2'>
-            <Input labelName='save' onChange={handleChange} placeHolder='Enter amount' inputName='savedamt' inputValue='savedamt' inputType='number' inputStyle='w-full bg-gray-100'  />
+          <form onSubmit={handleSubmit}>
+            <Input labelName='save' onChange={handleChange} placeHolder='Enter amount' inputName='savedamount' inputValue={amount} inputType='number' inputStyle='w-full bg-gray-100' />
+          </form>
         </div>
+        <p className='text-red py-2 text-sm'>{error}</p>
         <div className='py-2 px-2 w-full'>
             <Button buttonName='Save' buttonStyle='text-white font-medium w-full font-sm bg-green rounded-md'/>
         </div>
