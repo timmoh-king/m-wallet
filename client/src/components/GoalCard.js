@@ -4,7 +4,7 @@ import Button from './Button';
 import Input from './Input';
 import { useState } from "react";
 
-const GoalCard = ({ goaltitle, date, targetAmt, savedAmt }) => {
+const GoalCard = ({ goaltitle, date, targetAmt, savedAmt, walletId }) => {
   const [amount, setAmount] = useState('');
   const [error, setError] = useState('');
 
@@ -30,6 +30,9 @@ const GoalCard = ({ goaltitle, date, targetAmt, savedAmt }) => {
             }
         };
       await axios.get("http://localhost:3005/api/stk/", config);
+      console.log(walletId)
+      const response = await axios.put(`http://localhost:3005/api/get_wallets/${walletId}`, { savedamount: amount }, config);
+      setAmount(response.data.savedamount);
       clearForm()
     } catch (error) {
       setError(error.response.data.error)
@@ -62,7 +65,7 @@ const GoalCard = ({ goaltitle, date, targetAmt, savedAmt }) => {
             <Input index="input-amount" labelName='save' onChange={handleChange} placeHolder='Enter amount' inputName='savedamount' inputValue={amount} inputType='number' inputStyle='w-full bg-gray-100' />
             <p className='text-red py-2 text-sm'>{error}</p>
             <div className='py-2 w-full'>
-                <Button buttonName='Save' buttonStyle='text-white font-medium w-full font-sm bg-green rounded-md'/>
+                <Button onClick={(e) => handleSubmit(e, walletId)} buttonName='Save' buttonStyle='text-white font-medium w-full font-sm bg-green rounded-md'/>
             </div>
           </form>
         </div>

@@ -23,4 +23,22 @@ userWalletRouter.get("/", async (request, response) => {
     response.json(wallets);
 });
 
+userWalletRouter.put("/:id", async (request, response) => {
+    const body = request.body;
+
+    const existingWallet = await Wallet.findById(request.params.id);
+
+    if (!existingWallet) {
+        return response.status(404).json({ error: "Wallet not found" });
+    }
+
+    const newSavedAmount = existingWallet.savedamount + body.savedamount;
+
+    existingWallet.savedamount = newSavedAmount;
+
+    const updatedWallet = await existingWallet.save();
+
+    response.status(201).json(updatedWallet);
+});
+
 module.exports = userWalletRouter;

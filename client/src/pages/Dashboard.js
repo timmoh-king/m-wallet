@@ -94,14 +94,14 @@ export const MyGoals = () => {
 
     return (
         <div className='container mx-auto flex flex-row px-6 mt-4 space-x-4'>
-            {wallets.map((wallets) => (
+            {wallets.map((wallet) => (
                 <div key={uuidv4()}>
                     <GoalCard
-                        key={wallets._id}
-                        goaltitle={wallets.title}
-                        date={wallets.duedate}
-                        targetAmt={wallets.targetamount}
-                        savedAmt={wallets.savedamount}
+                        walletId={wallet.id}
+                        goaltitle={wallet.title}
+                        date={wallet.duedate}
+                        targetAmt={wallet.targetamount}
+                        savedAmt={wallet.savedamount}
                     />
                 </div>
             ))}

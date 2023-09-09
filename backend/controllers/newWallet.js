@@ -43,18 +43,4 @@ newWalletRouter.post("/", async (request, response) => {
     response.status(201).json(savedWallet);
 });
 
-newWalletRouter.put("/:id", async (request, response) => {
-    const body = request.body;
-
-    const wallet = {
-        savedamount: body.savedamount,
-    };
-
-    updatedWallet = await Wallet.findByIdAndUpdate(request.params.id, wallet, {
-        new: true,
-    });
-    response.status(201).json(updatedWallet);
-});
-
-
 module.exports = newWalletRouter;
