@@ -29,9 +29,9 @@ const GoalCard = ({ goaltitle, date, targetAmt, savedAmt, walletId }) => {
                 'Authorization': `Bearer ${token}`
             }
         };
-      await axios.get("http://localhost:3005/api/stk/", config);
-      const response = await axios.put(`http://localhost:3005/api/get_wallets/${walletId}`, { savedamount: amount }, config);
-      setAmount(response.data.savedamount);
+      await axios.post("http://localhost:3005/api/stk/", { amount }, config);
+      const response = await axios.put(`http://localhost:3005/api/get_wallets/${walletId}`, { amount: amount }, config);
+      setAmount(response.data.amount);
       clearForm()
     } catch (error) {
       setError(error.response.data.error)
@@ -61,7 +61,7 @@ const GoalCard = ({ goaltitle, date, targetAmt, savedAmt, walletId }) => {
         </div>
         <div className='w-full py-2 px-2'>
           <form onSubmit={handleSubmit}>
-            <Input index="input-amount" labelName='save' onChange={handleChange} placeHolder='Enter amount' inputName='savedamount' inputValue={amount} inputType='number' inputStyle='w-full bg-gray-100' />
+            <Input index="input-amount" labelName='save' onChange={handleChange} placeHolder='Enter amount' inputName='amount' inputValue={amount} inputType='number' inputStyle='w-full bg-gray-100' />
             <p className='text-red py-2 text-sm'>{error}</p>
             <div className='py-2 w-full'>
                 <Button onClick={(e) => handleSubmit(e, walletId)} buttonName='Save' buttonStyle='text-white font-medium w-full font-sm bg-green rounded-md'/>

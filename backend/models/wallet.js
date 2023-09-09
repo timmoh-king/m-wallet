@@ -19,6 +19,10 @@ const walletSchema = new mongoose.Schema({
     savedamount: {
         type: Number,
     },
+    amount: {
+        type: Number,
+        default: 0
+    },
     duedate: {
         type: Date,
         required: true,

@@ -14,7 +14,7 @@ const getTokenFrom = (request) => {
     return null;
 };
 
-stkRouter.get('/', async (req, res) => {
+stkRouter.post('/', async (req, res) => {
     const access_token = await getAccessToken();
 
     const decodedToken = jwt.verify(getTokenFrom(req), process.env.SECRET);
@@ -44,7 +44,7 @@ stkRouter.get('/', async (req, res) => {
                 "Password": "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjMwODI4MTc1OTA0",
                 "Timestamp": '20230828175904',
                 "TransactionType": "CustomerPayBillOnline",
-                "Amount": wallet.savedamount,
+                "Amount":  req.body.amount,
                 "PartyA": 254718543357,
                 "PartyB": 174379,
                 "PhoneNumber": user.contact,

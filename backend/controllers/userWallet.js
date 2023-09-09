@@ -26,13 +26,17 @@ userWalletRouter.get("/", async (request, response) => {
 userWalletRouter.put("/:id", async (request, response) => {
     const body = request.body;
 
+    if (isNaN(body.amount)) {
+        return response.status(400).json({ error: "Invalid amount provided" });
+      }
+
     const existingWallet = await Wallet.findById(request.params.id);
 
     if (!existingWallet) {
         return response.status(404).json({ error: "Wallet not found" });
     }
 
-    const newSavedAmount = existingWallet.savedamount + body.savedamount;
+    const newSavedAmount = existingWallet.savedamount + parseInt(body.amount);
 
     existingWallet.savedamount = newSavedAmount;
 

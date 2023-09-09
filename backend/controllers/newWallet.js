@@ -26,7 +26,6 @@ newWalletRouter.post("/", async (request, response) => {
         title: body.title,
         description: body.description,
         targetamount: body.targetamount,
-        savedamount: body.savedamount,
         duedate: body.duedate,
         user: user.id,
         goal: body.goal
