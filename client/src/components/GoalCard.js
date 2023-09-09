@@ -5,22 +5,31 @@ import Input from './Input';
 import { useState } from "react";
 
 const GoalCard = ({ goaltitle, date, targetAmt, savedAmt }) => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setAmount((prev) => ({ ...prev, [name]: value }))
-  }
+    // eslint-disable-next-line
+    const { name, value } = e.target;
+    setAmount(value);
+}
 
   const clearForm = () => {
-    setAmount(0)
+    setAmount('')
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.get("http://localhost:3005/api/stk/");
+      const userJSONString = localStorage.getItem('user');
+      const userObject = JSON.parse(userJSONString);
+      const token = userObject.token;
+      const config = {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        };
+      await axios.get("http://localhost:3005/api/stk/", config);
       clearForm()
     } catch (error) {
       setError(error.response.data.error)
@@ -50,12 +59,12 @@ const GoalCard = ({ goaltitle, date, targetAmt, savedAmt }) => {
         </div>
         <div className='w-full py-2 px-2'>
           <form onSubmit={handleSubmit}>
-            <Input labelName='save' onChange={handleChange} placeHolder='Enter amount' inputName='savedamount' inputValue={amount} inputType='number' inputStyle='w-full bg-gray-100' />
+            <Input index="input-amount" labelName='save' onChange={handleChange} placeHolder='Enter amount' inputName='savedamount' inputValue={amount} inputType='number' inputStyle='w-full bg-gray-100' />
+            <p className='text-red py-2 text-sm'>{error}</p>
+            <div className='py-2 w-full'>
+                <Button buttonName='Save' buttonStyle='text-white font-medium w-full font-sm bg-green rounded-md'/>
+            </div>
           </form>
-        </div>
-        <p className='text-red py-2 text-sm'>{error}</p>
-        <div className='py-2 px-2 w-full'>
-            <Button buttonName='Save' buttonStyle='text-white font-medium w-full font-sm bg-green rounded-md'/>
         </div>
       </div>
     </div>
