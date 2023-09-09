@@ -118,7 +118,9 @@ const Dashboard = () => {
             <div className='flex flex-col items-center'>
                 <AdminNav />
                 <NewGoalCards />
-                <MyGoals />
+                <div className='flex flex-row items-center justify-between overflow-y-auto'>
+                    <MyGoals />
+                </div>  
             </div>
             :
             <></>
