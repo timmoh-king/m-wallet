@@ -30,7 +30,6 @@ const GoalCard = ({ goaltitle, date, targetAmt, savedAmt, walletId }) => {
             }
         };
       await axios.get("http://localhost:3005/api/stk/", config);
-      console.log(walletId)
       const response = await axios.put(`http://localhost:3005/api/get_wallets/${walletId}`, { savedamount: amount }, config);
       setAmount(response.data.savedamount);
       clearForm()
