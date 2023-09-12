@@ -3,13 +3,14 @@ import axios from 'axios'
 import Button from './Button';
 import Input from './Input';
 
-const WalletModal = ({ isOpen, onClose }) => {
+const WalletModal = ({ isOpen, onClose, goalId }) => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
         targetamount: '',
         duedate: '',
-        savedamount: '0'
+        savedamount: 0,
+        goal: goalId,
     });
 
     const { title, description, targetamount, duedate, savedamount } = formData;
@@ -65,7 +66,7 @@ const WalletModal = ({ isOpen, onClose }) => {
             <Input index="wallet-date" onChange={handleChange} inputValue={duedate} labelName='Due date' placeHolder='Enter due date' isRequired={true} inputName='duedate' inputType='date' inputStyle='w-full' />
             <Input index="wallet-saved" onChange={handleChange} inputValue={savedamount} labelName='Saved amount' placeHolder='Set it to zero(0)' isRequired={true} inputName='savedamount' inputType='number' inputStyle='w-full' />
             <div className='px-2 pt-3 pb-2 mt-8'>
-                <Button buttonName='create goal' buttonType='submit' buttonStyle='text-white font-medium font-sm w-[126px] bg-skyBlue rounded-md'/>
+                <Button buttonName='create goal' buttontype='submit' buttonStyle='text-white font-medium font-sm w-[126px] bg-skyBlue rounded-md'/>
             </div>
           </form>
 

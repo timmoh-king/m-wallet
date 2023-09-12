@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from './Button'
 import WalletModal from './WalletModal'
 
-const AdminCards = ({imgsrc, imgalt, cardtitle, cardtext}) => {
+const AdminCards = ({ imgsrc, imgalt, cardtitle, cardtext, goalId }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -11,6 +11,11 @@ const AdminCards = ({imgsrc, imgalt, cardtitle, cardtext}) => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleNewWallet = () => {
+    // Open the modal and pass the goalId
+    openModal();
   };
 
   return (
@@ -23,12 +28,13 @@ const AdminCards = ({imgsrc, imgalt, cardtitle, cardtext}) => {
         <p className='text-white font-medium text-sm hover:animate-bounce'>{cardtext}</p>
       </div>
       <div className='px-2 pt-3 pb-2 mt-8'>
-        <Button onClick={openModal} buttonName='create goal' buttonStyle='text-white font-medium font-sm w-[126px] bg-skyBlue rounded-md'/>
+        <Button onClick={handleNewWallet} buttonName='create goal' buttonStyle='text-white font-medium font-sm w-[126px] bg-skyBlue rounded-md'/>
       </div>
 
       <WalletModal
         isOpen={isModalOpen}
         onClose={closeModal}
+        goalId={goalId}
       />
     </div>
   )

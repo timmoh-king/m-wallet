@@ -41,7 +41,6 @@ export const NewGoalCards = () => {
         const getGoals = async () => {
             try {
                 const response = await axios.get("http://localhost:3005/api/goals/");
-                console.log(response.data)
                 setGoals(response.data);
             } catch (error) {
                 console.log(error.response.data.error);
@@ -56,7 +55,7 @@ export const NewGoalCards = () => {
             {goals.map((goal) => (
                 <div key={uuidv4()}>
                     <AdminCards
-                        key={goal.id}
+                        goalId={goal.id}
                         imgsrc={goal.url}
                         cardtitle={goal.title}
                         cardtext={goal.description}
