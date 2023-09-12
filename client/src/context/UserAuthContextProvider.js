@@ -9,19 +9,19 @@ export const UserAuthContextProvider = ({ children }) => {
   );
 
   const signin = async (inputs) => {
-    const res = await axios.post("http://localhost:3005/api/signin/", inputs);
+    const res = await axios.post("/api/signin/", inputs);
     setCurrentUser(res.data);
   };
 
   const signup = async (inputs) => {
-    await axios.post("http://localhost:3005/api/signup/", inputs);
+    await axios.post("/api/signup/", inputs);
     setCurrentUser(inputs);
   };
 
   const logout = async () => {
     localStorage.removeItem("user");
     setCurrentUser(null);
-    await axios.post("http://localhost:3005/api/logout/");
+    await axios.post("/api/logout/");
   };
 
   useEffect(() => {
