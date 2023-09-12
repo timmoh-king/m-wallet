@@ -2,6 +2,7 @@ const config = require("./utils/config");
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const path = require('path');
 require("express-async-errors");
 const logger = require("./utils/logger");
 const middleware = require("./middlewares/middleware");
@@ -35,6 +36,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json())
 app.use(middleware.requestLogger);
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.use("/api/users", usersRouter);
 app.use("/api/signin", loginRouter);
