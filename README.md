@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# M-Wallet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*Start your budgeting and savings journey right away!!*
 
-## Available Scripts
+![M-wallet logo](https://drive.google.com/file/d/1me3eFhH35SOFvBka1uqi9IewDIGqJ62D/view?usp=drive_link)
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Introduction](#introduction)
+- [The Team](#the-team)
+- [Technologies And Architecture](#technologies-and-architecture)
+- [Third Party Services Used](#third-party-services-used)
+- [API Endpoints](#api-endpoints)
+- [Mockups](#mockups)
+- [Work Schedule](#work-schedule)
+- [Presentation Slides](#presentation-slides)
+- [GitHub Repository](#github-repository)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Introduction
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Budgeting and financial planning are genuinely difficult tasks, especially when focusing on immediate and short-term objectives. It's difficult to keep track of your weekly expenses as well. As a financial platform that enables users to set budgeting objectives, schedule goals, and begin saving toward the goals, M-Wallet steps in to address the issue. This makes it simple to obtain metrics and have a complete picture of expenditures.
 
-### `npm test`
+You can learn more in the [M-Wallet blog](https://facebook.github.io/create-react-app/docs/getting-started).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## The Team
 
-### `npm run build`
+- Timothy Munene Kariuki: ALX Software engineering student
+**GitHub**: [view profile](https://github.com/timmoh-king)
+**LinkedIn**: [view profile](https://www.linkedin.com/in/timothy-kariuki-3t6s/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Learning Objectives
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Learning how to accurately define and plan the scope of a project to ensure that it meets the MVP needs and expectations.
+- Learning how to design and implement a RESTful API that allows for easy and efficient communication between different parts of a system or between different systems.
+- Learning how to use the React JavaScript library to build user interfaces and manage the state of an application.
+- Learning how to deploy a website to a server and make it accessible to users on the internet.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Endpoints
 
-### `npm run eject`
+The Qquiz API provides the following endpoints:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Method | Endpoint | Description |
+| ------ | -------- | ----------- |
+| POST  | /api/signin | Validate the user's email and password, create a session for the authenticated user, and set a cookie with the session ID. Return a JSON representation of the user object or an error message. |
+| POST | api/signup | Create a new user account with some data and return a JSON representation of the user object or an error message. |
+| GET | api/users | Get all user accounts with some data and return a JSON representation of the user object or an error message. |
+| POST | api/goals | Create a new user goal with some data and return a JSON representation of the user object or an error message. |
+| GET | api/goals | Get all goals with some data and return a JSON representation of the user object or an error message. |
+| POST | api/new_wallet | Create a new user wallet with some data and return a JSON representation of the user object or an error message. |
+| GET | api/user_wallets | Get all user wallets with some data and return a JSON representation of the user object or an error message. |
+| POST | api/stk_push | Initialize a transaction with some data and return a JSON representation of the user object or an error message. |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Technologies And Architecture
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **React Js**: JavaScript library for building  user interfaces
+- **Node Js**: JavaScript framework used used to create server-side and networking applications
+- **Express**: Web application framework for Node Js that assists in HTTP and building APIs
+- **MongoDB**: NoSQL database that uses JSON-like documents with dynamic schemas
 
-## Learn More
+## Third Party Services Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
+- **Vercel**: Cloud platform as a service (PaaS), which enables developers to build, run, and operate applications entirely in the cloud.
+- **Mpesa Daraja API**: Allows users to make secure mobile money transactions from one registered line to another account
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Mockups
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The mockups for the M-wallet project is available [here](https://www.figma.com/file/lwIMLHnQmWRb7VgqPG4yZY/M-Wallet?type=design&node-id=1-14&mode=design&t=IjMA0AKQIRFHIC7d-0)
 
-### Advanced Configuration
+## Work Schedule
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The work schedule for the M-wallet project is available [here](https://trello.com/invite/b/tGyJXEqC/ATTIb98e923424334bd7bf620de0229795304D1392B1/m-wallet)
 
-### Deployment
+## Presentation Slides
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The presentation slides for the M-wallet project is available [here](https://docs.google.com/presentation/d/104XVfkRPSAnoIl-r3IKOWhxmqAHUu7m30oES42RcZL0/edit?usp=sharing)
 
-### `npm run build` fails to minify
+## GitHub repository
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The GitHub repository link for the M-wallet project is available [here](https://github.com/timmoh-king/m-wallet.git)
+
+## M-Wallet Environment Variables
+
+Environment variables are used to store sensitive or configurable information that should not be exposed in the code. They are usually set in a separate file or in the terminal before running the application. For M-Wallet, the following environment variables are required:
+- MONGO_URI: MongoDB secret link to allow connection to the cluster
+- SECRET: secret key to allow assigning of JWT token
+- PORT: port number of the M-Wallet API server
+
+To run the M-Wallet API server, you need to use this command:
+
+`nodemon index.js`
+
+To ensure that node version 16 installs in Ubuntu 22.04, you need to run this command:
+
+`sudo apt-upgrade sudo apt-intall`
+`sudo apt-get install node`
