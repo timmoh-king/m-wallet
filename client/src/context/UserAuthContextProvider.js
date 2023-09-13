@@ -1,3 +1,8 @@
+/**
+ * define the authentication routes
+ * export the authentication routes
+ */
+
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 

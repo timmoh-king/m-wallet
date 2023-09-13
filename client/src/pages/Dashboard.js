@@ -1,3 +1,8 @@
+/**
+ * Create the user dashboard
+ * Ensure all compents are separately built and rendered as one component
+ */
+
 import React from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
