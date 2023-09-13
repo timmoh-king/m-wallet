@@ -35,7 +35,7 @@ const Signin = () => {
     e.preventDefault();
     try {
       await signin(inputs);
-      navigate("/home")
+      navigate("/dashboard")
       clearForm()
     } catch (error) {
       setError(error.response.data.error)
@@ -66,7 +66,7 @@ const Signin = () => {
               <Link className='text-sm text-blackText py-2 hover:text-skyBlue' to='/signup'>Don't have an account?</Link>
             </div>
             <p className='text-red py-2 text-sm'>{error}</p>
-            <Button to='/home' buttonName="Sign in" buttonStyle='bg-skyBlue w-full text-semibold text-white hover:bg-white hover:text-black hover:ring-1 hover:font-bold hover:ring-skyBlue' />
+            <Button to='/dashboard' buttonName="Sign in" buttonStyle='bg-skyBlue w-full text-semibold text-white hover:bg-white hover:text-black hover:ring-1 hover:font-bold hover:ring-skyBlue' />
           </form>
         </div>
       </div>

@@ -40,7 +40,7 @@ export const NewGoalCards = () => {
     useEffect(() => {
         const getGoals = async () => {
             try {
-                const response = await axios.get("/api/goals/");
+                const response = await axios.get("http://localhost:3005/api/goals/");
                 setGoals(response.data);
             } catch (error) {
                 console.log(error.response.data.error);
@@ -82,7 +82,7 @@ export const MyGoals = () => {
     useEffect(() => {
         const getWallets = async () => {
             try {
-                const response = await axios.get("/api/get_wallets/", config);
+                const response = await axios.get("http://localhost:3005/api/get_wallets/", config);
                 setWallets(response.data);
             } catch (error) {
                 console.log(error.response.data.error);

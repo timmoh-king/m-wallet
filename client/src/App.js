@@ -9,7 +9,7 @@ function App() {
   return (
     <Routes>
       <Route element={<PrivateRoutes />}>
-        <Route path="home" element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard />} />
       </Route>
 
       <Route path="/" element={<Homepage />} />

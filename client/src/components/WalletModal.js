@@ -37,7 +37,7 @@ const WalletModal = ({ isOpen, onClose, goalId }) => {
                 },
             };
 
-            const response = await axios.post('/api/new_wallet', formData, config);
+            const response = await axios.post('http://localhost:3005/api/new_wallet', formData, config);
             console.log('Wallet created:', response.data);
 
             onClose();
