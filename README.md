@@ -2,7 +2,7 @@
 
 *Start your budgeting and savings journey right away!!*
 
-![M-wallet logo](https://drive.google.com/file/d/1me3eFhH35SOFvBka1uqi9IewDIGqJ62D/view?usp=drive_link)
+![M-wallet logo](./client/src//assets/readmelogo.PNG)
 
 ## Table of Contents
 
@@ -62,8 +62,6 @@ The Qquiz API provides the following endpoints:
 
 - **Vercel**: Cloud platform as a service (PaaS), which enables developers to build, run, and operate applications entirely in the cloud.
 - **Mpesa Daraja API**: Allows users to make secure mobile money transactions from one registered line to another account
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
 ## Mockups
 
