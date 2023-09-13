@@ -29,7 +29,7 @@ const GoalCard = ({ goaltitle, date, targetAmt, savedAmt, walletId }) => {
                 'Authorization': `Bearer ${token}`
             }
         };
-      await axios.post("/api/stk/", { amount }, config);
+      await axios.post("http://localhost:3005/api/stk/", { amount }, config);
       const response = await axios.put(`http://localhost:3005/api/get_wallets/${walletId}`, { amount: amount }, config);
       setAmount(response.data.amount);
       clearForm()
