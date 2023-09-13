@@ -1,3 +1,9 @@
+/**
+ * api route to enable the user to authenticate - signup
+ * ensure that the user email doesn't exist else throw an error "email exist"
+ * ensure that the user provides the firstname, lastname, contact and password
+ */
+
 const bcrypt = require("bcrypt");
 const signupRouter = require("express").Router();
 const User = require("../models/user");

@@ -1,3 +1,9 @@
+/**
+ * wallet route to get all wallet defined in the MOongoDb database
+ * wallet route to get a wallet by id
+ * wallet route to delete a wallet from the database
+ */
+
 const walletsRouter = require("express").Router();
 const Wallet = require("../models/wallet");
 

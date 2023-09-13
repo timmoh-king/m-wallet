@@ -1,3 +1,8 @@
+/**
+ * Goal route to get all goals defined in the MOongoDb database
+ * Goal route to post a new goal to the database
+ */
+
 const goalsRouter = require("express").Router();
 const Goal = require("../models/goal");
 

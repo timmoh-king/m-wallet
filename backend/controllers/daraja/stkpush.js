@@ -1,3 +1,8 @@
+/**
+ * STK push code to allow the user to transact money to the wallet
+ * the wallet saved amount will automatically be updated after the transaction is done
+ */
+
 const jwt = require("jsonwebtoken");
 const stkRouter = require("express").Router();
 const requireAccessToken = require("../../middlewares/middleware")

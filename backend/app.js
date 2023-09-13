@@ -1,3 +1,8 @@
+/**
+ * restart mongodb connection from the server
+ * register all api routes
+ */
+
 const config = require("./utils/config");
 const express = require("express");
 const app = express();

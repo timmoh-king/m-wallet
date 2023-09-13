@@ -1,3 +1,8 @@
+/**
+ * user route to get all users defined in the MOongoDb database
+ * user route to get a user by id
+ */
+
 const usersRouter = require("express").Router();
 const User = require("../models/user");
 

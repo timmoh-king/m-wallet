@@ -1,3 +1,7 @@
+/**
+ * goal schema to create goal table in the database
+ */
+
 const mongoose = require("mongoose");
 
 const goalSchema = new mongoose.Schema({

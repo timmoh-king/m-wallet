@@ -1,3 +1,7 @@
+/**
+ * wallet schema to create wallet table in the database
+ */
+
 const mongoose = require("mongoose");
 const { format } = require("date-fns");
 

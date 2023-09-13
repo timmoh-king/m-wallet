@@ -1,3 +1,8 @@
+/**
+ * api route to handle the user logout
+ * set the user authentication token to null
+ */
+
 const logoutRouter = require("express").Router();
 const jwt = require("jsonwebtoken");
 

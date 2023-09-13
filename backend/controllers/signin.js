@@ -1,3 +1,9 @@
+/**
+ * api route to enable the user to authenticate - signin
+ * ensure that the user email exists else throw an error "email doesn't exist"
+ * ensure that the user password is correct else throw an error "wrong password"
+ */
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const loginRouter = require("express").Router();

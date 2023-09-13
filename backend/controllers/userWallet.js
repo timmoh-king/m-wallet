@@ -1,3 +1,8 @@
+/**
+ * wallet route to get all wallets defined in the MOongoDb database
+ * wallet route to update a wallet when a transaction is made by the end user
+ */
+
 const jwt = require("jsonwebtoken");
 const userWalletRouter = require("express").Router();
 const Wallet = require("../models/wallet");

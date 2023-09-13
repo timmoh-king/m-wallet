@@ -1,3 +1,8 @@
+/**
+ * api route to enable the user to create a new wallet
+ * ensure that the user is authenticated else throw an error "token not found"
+ */
+
 const jwt = require("jsonwebtoken");
 const newWalletRouter = require("express").Router();
 const Wallet = require("../models/wallet");

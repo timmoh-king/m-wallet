@@ -1,3 +1,8 @@
+/**
+ * get access token from the Mpesa Daraja api
+ * the token will be used to authorize all Mpesa transactions
+ */
+
 const accessTokenRouter = require("express").Router();
 const request = require("request");
 

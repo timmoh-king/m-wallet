@@ -1,3 +1,7 @@
+/**
+ * user schema to create user table in the database
+ */
+
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
