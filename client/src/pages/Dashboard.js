@@ -20,7 +20,7 @@ export const AdminNav = () => {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
-        await logout;
+        await logout();
         navigate('/')
     }
 

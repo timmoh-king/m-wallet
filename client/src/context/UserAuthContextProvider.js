@@ -15,6 +15,7 @@ export const UserAuthContextProvider = ({ children }) => {
 
   const signin = async (inputs) => {
     const res = await axios.post("https://m-wallet.onrender.com/api/signin/", inputs);
+    localStorage.setItem("user", JSON.stringify(res.data));
     setCurrentUser(res.data);
   };
 
@@ -25,8 +26,9 @@ export const UserAuthContextProvider = ({ children }) => {
 
   const logout = async () => {
     localStorage.removeItem("user");
+    const token = currentUser.token;
+    await axios.post("https://m-wallet.onrender.com/api/logout/", {token});
     setCurrentUser(null);
-    await axios.post("https://m-wallet.onrender.com/api/logout/");
   };
 
   useEffect(() => {
