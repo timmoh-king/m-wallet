@@ -5,7 +5,7 @@ import { UserAuthContext } from "../context/UserAuthContextProvider";
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
-import Input from '../components/Input'
+import Input from '../components/Input';
 
 const Signup = () => {
   const [inputs, setInputs] = useState({
@@ -42,7 +42,7 @@ const Signup = () => {
     e.preventDefault();
     try{
       await signup(inputs);
-      navigate("/dashboard")
+      navigate("/signin")
       clearForm()
     } catch (error){
       setError(error.response.data.error)
@@ -83,7 +83,7 @@ const Signup = () => {
               <Link className='text-sm text-blackText py-2 hover:text-skyBlue' to='/signin'>Already have an account?</Link>
             </div>
             <p className='text-red py-2 text-sm'>{error}</p>
-            <Button to='/dashboard' buttonName="Sign up" buttonStyle='bg-skyBlue w-full text-semibold text-white hover:bg-white hover:text-black hover:ring-1 hover:font-bold hover:ring-skyBlue' />
+            <Button to='/signin' buttonName="Sign up" buttonStyle='bg-skyBlue w-full text-semibold text-white hover:bg-white hover:text-black hover:ring-1 hover:font-bold hover:ring-skyBlue' />
           </form>
         </div>
       </div>
